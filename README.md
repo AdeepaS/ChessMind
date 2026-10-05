@@ -1,2 +1,2 @@
 # ChessMind
-Personalized chess weakness detection and training recommendation system using engine analysis and machine learning.
+A personalized chess weakness detection and explainable training recommendation system that analyzes a player's historical games, identifies recurring mistake patterns, creates a multidimensional weakness profile, and recommends targeted training.
