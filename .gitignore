@@ -149,6 +149,9 @@ activemq-data/
 # SageMath parsed files
 *.sage.py
 
+# Stockfish binary
+tools/stockfish/
+
 # Environments
 .env
 .envrc
