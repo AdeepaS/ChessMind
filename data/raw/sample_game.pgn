@@ -1,9 +1,17 @@
 [Event "ChessMind Test"]
 [Site "?"]
-[Date "2026.10.05"]
+[Date "2026.10.06"]
 [Round "1"]
 [White "Adeepa"]
-[Black "Test Opponent"]
-[Result "*"]
+[Black "Test Player"]
+[Result "1-0"]
 
-1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 *
+1. e4 e5
+2. Nf3 Nc6
+3. Bc4 Nf6
+4. d3 Bc5
+5. O-O O-O
+6. Nc3 d6
+7. Bg5 Be6
+8. Nd5 Bxd5
+9. Bxd5 1-0
