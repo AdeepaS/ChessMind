@@ -1,10 +1,18 @@
 import chess
 import chess.engine
 
+from src.chessmind.analysis.weakness_analyzer import detect_weakest_phase
 from src.chessmind.analysis.game_phase import detect_game_phase
+from src.chessmind.analysis.weakness_report import generate_weakness_report
+
 from src.chessmind.engine.analyzer import (
     STOCKFISH_PATH,
     analyze_board
+)
+
+from src.chessmind.analysis.weakness_analyzer import (
+    detect_weakest_phase,
+    find_worst_moves
 )
 
 
@@ -299,6 +307,22 @@ if __name__ == "__main__":
         game,
         depth=12
     )
+    
+    print("\n===== GAME PHASE TRANSITIONS =====")
+
+    previous_phase = None
+
+    for move in analysis:
+        current_phase = move["phase"]
+
+        if current_phase != previous_phase:
+            print(
+                f'Move {move["move_number"]} '
+                f'({move["color"]}): '
+                f'{current_phase.upper()}'
+            )
+
+            previous_phase = current_phase
 
     # ---------------------------------------
     # Print move-by-move analysis
@@ -397,3 +421,60 @@ if __name__ == "__main__":
                 f'Moves: {phase_stats["moves"]} | '
                 f'ACPL: {phase_stats["acpl"]:.2f}'
             )
+            
+    weaknesses = detect_weakest_phase(stats)
+
+    print("\n===== WEAKEST PHASE ANALYSIS =====")
+
+    for color, weakness in weaknesses.items():
+        print(f"\n{color.upper()}")
+
+        if weakness is None:
+            print("Insufficient moves for phase analysis.")
+            continue
+
+        print(f'Weakest phase: {weakness["phase"]}')
+        print(f'ACPL: {weakness["acpl"]:.2f}')
+        print(f'Moves analyzed: {weakness["moves"]}')
+ 
+    
+    worst_moves = find_worst_moves(
+        analysis,
+        weaknesses,
+        top_n=5
+    )
+
+    print("\n===== WORST MOVES IN WEAKEST PHASE =====")
+
+    for color, moves in worst_moves.items():
+        print(f"\n{color.upper()}")
+
+        if not moves:
+            print("No moves available.")
+            continue
+
+        for move in moves:
+            prefix = (
+                f'{move["move_number"]}.'
+                if move["color"] == "white"
+                else f'{move["move_number"]}...'
+            )
+
+            print(
+                f'{prefix} {move["san"]} | '
+                f'{move["classification"]} | '
+                f'Loss: {move["centipawn_loss"]} cp | '
+                f'Best: {move["best_move"]}'
+            )
+    
+    import json
+
+    report = generate_weakness_report(
+        analysis,
+        stats,
+        top_n=5
+    )
+
+    print("\n===== CHESSMIND WEAKNESS REPORT =====")
+
+    print(json.dumps(report, indent=4))
