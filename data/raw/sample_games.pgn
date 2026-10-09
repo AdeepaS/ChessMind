@@ -1,0 +1,21 @@
+
+[Event "ChessMind Test 1"]
+[White "Adeepa"]
+[Black "Player A"]
+[Result "1-0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 1-0
+
+[Event "ChessMind Test 2"]
+[White "Player B"]
+[Black "Adeepa"]
+[Result "0-1"]
+
+1. d4 d5 2. c4 e6 0-1
+
+[Event "ChessMind Test 3"]
+[White "Adeepa"]
+[Black "Player C"]
+[Result "1/2-1/2"]
+
+1. c4 e5 2. Nc3 Nf6 1/2-1/2
