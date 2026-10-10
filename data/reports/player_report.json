@@ -1,0 +1,109 @@
+{
+    "player": {
+        "name": "Adeepa"
+    },
+    "overall_performance": {
+        "total_games": 3,
+        "wins": 2,
+        "draws": 1,
+        "losses": 0,
+        "unfinished": 0,
+        "total_moves": 7,
+        "total_centipawn_loss": 42,
+        "overall_acpl": 6.0,
+        "classifications": {
+            "excellent": 7,
+            "good": 0,
+            "inaccuracy": 0,
+            "mistake": 0,
+            "blunder": 0
+        },
+        "phase_statistics": {
+            "opening": {
+                "total_moves": 7,
+                "total_centipawn_loss": 42,
+                "acpl": 6.0
+            },
+            "middlegame": {
+                "total_moves": 0,
+                "total_centipawn_loss": 0,
+                "acpl": null
+            },
+            "endgame": {
+                "total_moves": 0,
+                "total_centipawn_loss": 0,
+                "acpl": null
+            }
+        }
+    },
+    "recurring_weaknesses": {
+        "detected_phases": [],
+        "phase_details": {
+            "opening": {
+                "eligible_games": 0,
+                "weak_games": 0,
+                "weak_frequency": 0.0,
+                "overall_acpl": 6.0,
+                "game_acpls": [],
+                "is_recurring_weakness": false
+            },
+            "middlegame": {
+                "eligible_games": 0,
+                "weak_games": 0,
+                "weak_frequency": 0.0,
+                "overall_acpl": null,
+                "game_acpls": [],
+                "is_recurring_weakness": false
+            },
+            "endgame": {
+                "eligible_games": 0,
+                "weak_games": 0,
+                "weak_frequency": 0.0,
+                "overall_acpl": null,
+                "game_acpls": [],
+                "is_recurring_weakness": false
+            }
+        }
+    },
+    "games": [
+        {
+            "game_number": 1,
+            "color": "white",
+            "opponent": "Player A",
+            "result": "1-0",
+            "moves_analyzed": 3,
+            "acpl": 3.67,
+            "phase_acpl": {
+                "opening": 3.67,
+                "middlegame": null,
+                "endgame": null
+            }
+        },
+        {
+            "game_number": 2,
+            "color": "black",
+            "opponent": "Player B",
+            "result": "0-1",
+            "moves_analyzed": 2,
+            "acpl": 5.0,
+            "phase_acpl": {
+                "opening": 5.0,
+                "middlegame": null,
+                "endgame": null
+            }
+        },
+        {
+            "game_number": 3,
+            "color": "white",
+            "opponent": "Player C",
+            "result": "1/2-1/2",
+            "moves_analyzed": 2,
+            "acpl": 10.5,
+            "phase_acpl": {
+                "opening": 10.5,
+                "middlegame": null,
+                "endgame": null
+            }
+        }
+    ]
+}
