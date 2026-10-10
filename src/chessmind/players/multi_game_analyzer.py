@@ -4,7 +4,7 @@ from src.chessmind.analysis.game_analyzer import (
     calculate_game_statistics,
 )
 
-from src.chessmind.analysis.player_statistics import (
+from src.chessmind.players.player_statistics import (
     aggregate_player_statistics,
 )
 

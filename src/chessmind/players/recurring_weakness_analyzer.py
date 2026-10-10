@@ -1,5 +1,5 @@
 
-from src.chessmind.analysis.player_statistics import PHASES
+from src.chessmind.players.player_statistics import PHASES
 
 
 def detect_recurring_weaknesses(

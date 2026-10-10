@@ -1,6 +1,6 @@
 
 from src.chessmind.pgn.multi_game_parser import load_multiple_pgn
-from src.chessmind.analysis.player_identifier import find_player_games
+from src.chessmind.players.player_identifier import find_player_games
 
 
 def main():

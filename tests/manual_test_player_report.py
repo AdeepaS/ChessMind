@@ -5,15 +5,15 @@ from src.chessmind.pgn.multi_game_parser import (
     load_multiple_pgn,
 )
 
-from src.chessmind.analysis.player_identifier import (
+from src.chessmind.players.player_identifier import (
     find_player_games,
 )
 
-from src.chessmind.analysis.multi_game_analyzer import (
+from src.chessmind.players.multi_game_analyzer import (
     analyze_player_games,
 )
 
-from src.chessmind.analysis.player_report import (
+from src.chessmind.reports.player_report import (
     generate_player_report,
     save_player_report,
 )

@@ -1,5 +1,5 @@
 
-from src.chessmind.analysis.player_statistics import (
+from src.chessmind.players.player_statistics import (
     aggregate_player_statistics,
 )
 

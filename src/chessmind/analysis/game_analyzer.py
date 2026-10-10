@@ -3,7 +3,7 @@ import chess.engine
 
 from src.chessmind.analysis.weakness_analyzer import detect_weakest_phase
 from src.chessmind.analysis.game_phase import detect_game_phase
-from src.chessmind.analysis.weakness_report import generate_weakness_report
+from src.chessmind.reports.weakness_report import generate_weakness_report
 
 from src.chessmind.engine.analyzer import (
     STOCKFISH_PATH,

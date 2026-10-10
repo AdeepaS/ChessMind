@@ -1,5 +1,5 @@
 
-from src.chessmind.analysis.recurring_weakness_analyzer import (
+from src.chessmind.players.recurring_weakness_analyzer import (
     detect_recurring_weaknesses,
 )
 

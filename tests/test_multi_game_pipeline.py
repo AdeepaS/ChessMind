@@ -5,14 +5,14 @@ from importlib import import_module
 import pytest
 
 from src.chessmind.pgn.multi_game_parser import load_multiple_pgn
-from src.chessmind.analysis.player_identifier import find_player_games
-from src.chessmind.analysis.player_statistics import (
+from src.chessmind.players.player_identifier import find_player_games
+from src.chessmind.players.player_statistics import (
     aggregate_player_statistics,
 )
-from src.chessmind.analysis.recurring_weakness_analyzer import (
+from src.chessmind.players.recurring_weakness_analyzer import (
     detect_recurring_weaknesses,
 )
-from src.chessmind.analysis.player_report import (
+from src.chessmind.reports.player_report import (
     generate_player_report,
     save_player_report,
 )
@@ -294,7 +294,7 @@ def test_pipeline_with_mock_engine(
     """
 
     module = import_module(
-        "src.chessmind.analysis.multi_game_analyzer"
+        "src.chessmind.players.multi_game_analyzer"
     )
 
     def fake_analyze_game(game, depth=12):
