@@ -1,37 +1,34 @@
+"""Run from the project root: python tests/manual_test_player_statistics.py."""
 
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from src.chessmind.analysis.game_analyzer import calculate_game_statistics, classify_move
 from src.chessmind.players.player_statistics import (
     aggregate_player_statistics,
 )
 
 
-def make_stats(moves, acpl):
-    return {
-        "total_moves": moves,
-        "overall_acpl": acpl,
-        "phase_statistics": {
-            "opening": {
-                "total_moves": moves,
-                "acpl": acpl,
-            },
-            "middlegame": {
-                "total_moves": 0,
-                "acpl": None,
-            },
-            "endgame": {
-                "total_moves": 0,
-                "acpl": None,
-            },
-        },
-    }
+def make_stats(color, moves, acpl):
+    # Uniform synthetic CP losses yield the requested mean without Stockfish.
+    return calculate_game_statistics([
+        {
+            "color": color,
+            "phase": "opening",
+            "centipawn_loss": acpl,
+            "classification": classify_move(acpl),
+        }
+        for _ in range(moves)
+    ])
 
 
 def make_record(color, result, moves, acpl):
     return {
         "color": color,
         "result": result,
-        "stats": {
-            color: make_stats(moves, acpl),
-        },
+        "stats": make_stats(color, moves, acpl),
     }
 
 

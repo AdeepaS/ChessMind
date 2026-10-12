@@ -12,7 +12,7 @@ def load_pgn(file_path: str):
         chess.pgn.Game object.
 
     Raises:
-        ValueError: If the PGN file contains no game.
+        ValueError: If the PGN file contains no game or reported parsing errors.
     """
 
     with open(file_path, "r", encoding="utf-8") as pgn_file:
@@ -20,6 +20,9 @@ def load_pgn(file_path: str):
 
     if game is None:
         raise ValueError("No chess game found in PGN file.")
+
+    if game.errors:
+        raise ValueError(f"Invalid PGN game 1: {game.errors}")
 
     return game
 

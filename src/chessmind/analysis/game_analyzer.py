@@ -115,6 +115,7 @@ def analyze_game(game, depth=15):
 
     board = game.board()
     results = []
+    previous_phase = None
 
     engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
 
@@ -137,7 +138,8 @@ def analyze_game(game, depth=15):
             best_move = before_analysis["best_move"]
 
             # Detect the game phase before the move is played
-            phase = detect_game_phase(board, move_number)
+            phase = detect_game_phase(board, move_number, previous_phase=previous_phase)
+            previous_phase = phase
 
             # Store the position before the move
             fen_before = board.fen()

@@ -41,6 +41,12 @@ def move_label(move):
 
 
 def print_statistics(analysis, stats):
+    print("\nPhase Transitions (position before the listed move):")
+    previous_phase = None
+    for move in analysis:
+        if move["phase"] != previous_phase:
+            print(f'  {move["phase"].title()}: {move_label(move)}')
+            previous_phase = move["phase"]
     for color in ("white", "black"):
         player = stats[color]
         print(f"\n{color.title()} Statistics:")
