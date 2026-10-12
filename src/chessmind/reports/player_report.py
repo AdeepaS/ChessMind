@@ -46,11 +46,27 @@ def generate_player_report(
             "opponent": entry["opponent"],
             "result": entry["result"],
             "moves_analyzed": player_stats["moves"],
-            "acpl": round(player_stats["acpl"], 2),
+            "acpl": (round(player_stats["acpl"], 2)
+                     if player_stats["acpl"] is not None else None),
+            "cp_moves": player_stats.get("cp_moves", player_stats["moves"]),
+            "mate_moves": player_stats.get("mate_moves", 0),
+            "mate_errors": player_stats.get("mate_errors", 0),
+            "mate_transitions": [
+                {key: move.get(key) for key in (
+                    "move_number", "san", "phase", "classification", "mate_quality",
+                    "centipawn_loss", "evaluation_before_detail", "evaluation_after_detail",
+                )}
+                for move in entry["analysis"]
+                if move.get("color") == color and move.get("mate_quality") is not None
+            ],
+            "phase_cp_moves": {
+                phase: data.get("cp_moves", data["moves"])
+                for phase, data in player_stats["phases"].items()
+            },
             "phase_acpl": {
                 phase: (
                     round(phase_stats["acpl"], 2)
-                    if phase_stats["moves"] > 0
+                    if phase_stats["acpl"] is not None and phase_stats["moves"] > 0
                     else None
                 )
                 for phase, phase_stats

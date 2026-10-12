@@ -26,12 +26,18 @@ def generate_weakness_report(analysis, stats, top_n=5):
 
         report[color] = {
             "total_moves": stats[color]["moves"],
-            "overall_acpl": round(stats[color]["acpl"], 2),
+            "overall_acpl": (round(stats[color]["acpl"], 2) if stats[color]["acpl"] is not None else None),
+            "cp_moves": stats[color].get("cp_moves", stats[color]["moves"]),
+            "mate_moves": stats[color].get("mate_moves", 0),
+            "mate_errors": stats[color].get("mate_errors", 0),
             "weakest_phase": weakness,
             "phase_statistics": {
                 phase: {
                     "moves": data["moves"],
-                    "acpl": round(data["acpl"], 2),
+                    "acpl": round(data["acpl"], 2) if data["acpl"] is not None else None,
+                    "cp_moves": data.get("cp_moves", data["moves"]),
+                    "mate_moves": data.get("mate_moves", 0),
+                    "mate_errors": data.get("mate_errors", 0),
                 }
                 for phase, data in stats[color]["phases"].items()
             },
@@ -43,6 +49,9 @@ def generate_weakness_report(analysis, stats, top_n=5):
                     "centipawn_loss": move["centipawn_loss"],
                     "best_move": move["best_move"],
                     "fen_before": move["fen_before"],
+                    "mate_quality": move.get("mate_quality"),
+                    "evaluation_before_detail": move.get("evaluation_before_detail"),
+                    "evaluation_after_detail": move.get("evaluation_after_detail"),
                 }
                 for move in worst_moves[color]
             ],

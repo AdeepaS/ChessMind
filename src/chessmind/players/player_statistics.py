@@ -15,7 +15,9 @@ def aggregate_player_statistics(analyzed_games):
     Aggregate the target player's statistics across games.
 
     Uses raw centipawn-loss totals to calculate accurate
-    overall and phase ACPL values.
+    overall and phase ACPL values over cp_moves only. Mate moves are counted
+    separately; no comparable moves yields None. Old records without counters
+    are treated as CP-only (legacy synthetic mate losses cannot be recovered).
     """
 
     summary = {
@@ -25,6 +27,9 @@ def aggregate_player_statistics(analyzed_games):
         "losses": 0,
         "unfinished": 0,
         "total_moves": 0,
+        "cp_moves": 0,
+        "mate_moves": 0,
+        "mate_errors": 0,
         "total_centipawn_loss": 0,
         "overall_acpl": None,
         "classifications": {
@@ -33,6 +38,9 @@ def aggregate_player_statistics(analyzed_games):
         "phase_statistics": {
             phase: {
                 "total_moves": 0,
+                "cp_moves": 0,
+                "mate_moves": 0,
+                "mate_errors": 0,
                 "total_centipawn_loss": 0,
                 "acpl": None,
             }
@@ -76,6 +84,10 @@ def aggregate_player_statistics(analyzed_games):
 
         # Aggregate raw statistics
         summary["total_moves"] += player_stats["moves"]
+        # Legacy records without counters were entirely CP-comparable.
+        for key in ("cp_moves", "mate_moves", "mate_errors"):
+            summary[key] += player_stats.get(
+                key, player_stats["moves"] if key == "cp_moves" else 0)
 
         summary["total_centipawn_loss"] += (
             player_stats["total_centipawn_loss"]
@@ -94,16 +106,19 @@ def aggregate_player_statistics(analyzed_games):
             target = summary["phase_statistics"][phase]
 
             target["total_moves"] += phase_stats["moves"]
+            for key in ("cp_moves", "mate_moves", "mate_errors"):
+                target[key] += phase_stats.get(
+                    key, phase_stats["moves"] if key == "cp_moves" else 0)
 
             target["total_centipawn_loss"] += (
                 phase_stats["total_centipawn_loss"]
             )
 
     # Overall ACPL
-    if summary["total_moves"] > 0:
+    if summary["cp_moves"] > 0:
         summary["overall_acpl"] = round(
             summary["total_centipawn_loss"]
-            / summary["total_moves"],
+            / summary["cp_moves"],
             2,
         )
 
@@ -112,10 +127,10 @@ def aggregate_player_statistics(analyzed_games):
 
         phase_stats = summary["phase_statistics"][phase]
 
-        if phase_stats["total_moves"] > 0:
+        if phase_stats["cp_moves"] > 0:
             phase_stats["acpl"] = round(
                 phase_stats["total_centipawn_loss"]
-                / phase_stats["total_moves"],
+                / phase_stats["cp_moves"],
                 2,
             )
 

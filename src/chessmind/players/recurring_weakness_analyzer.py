@@ -17,7 +17,10 @@ def detect_recurring_weaknesses(
     - Phase ACPL exceeds acpl_threshold in a sufficient
       fraction of eligible games.
 
-    Thresholds are heuristic and configurable.
+    A mate error also makes a phase eligible and weak, even below the move
+    minimum. Mate-only phases with no error are excluded. game_acpls may contain
+    None when an eligible phase has mate errors but no CP-comparable moves.
+    Thresholds are configurable; mate-error prioritization is a fixed heuristic.
     """
 
     if min_games < 1 or min_moves_per_game < 1:
@@ -50,14 +53,17 @@ def detect_recurring_weaknesses(
 
             moves = phase_stats["moves"]
 
-            if moves < min_moves_per_game:
+            mate_errors = phase_stats.get("mate_errors", 0)
+            if (moves < min_moves_per_game and not mate_errors) or (
+                phase_stats["acpl"] is None and not mate_errors
+            ):
                 continue
 
             eligible_games += 1
             acpl = phase_stats["acpl"]
             phase_acpls.append(acpl)
 
-            if acpl > acpl_threshold:
+            if mate_errors or (acpl is not None and acpl > acpl_threshold):
                 weak_games += 1
 
         frequency = (

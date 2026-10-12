@@ -20,7 +20,8 @@ def calculate_centipawn_loss(before_score, after_score, color):
     """
     Calculate centipawn loss for the player who made the move.
 
-    Scores are always from White's perspective.
+    Scores must be genuine CP values, always from White's perspective.
+    For structured evaluations involving mate, use evaluate_move_quality().
     """
 
     if color == chess.WHITE:
@@ -49,6 +50,57 @@ def classify_move(cp_loss):
         return "Mistake"
     else:
         return "Blunder"
+
+
+def evaluate_move_quality(before, after, color):
+    """Compare structured White-POV evaluations from the mover's perspective.
+
+    CP/CP keeps the existing thresholds. Any mate endpoint makes CP loss
+    undefined. Lost/allowed/reversed winning mate is a Blunder. Slower winning
+    mate or faster losing mate is an Inaccuracy. Other mate outcomes are Good,
+    with a separate quality label (not a claim of CP precision).
+
+    On the winner's move the expected distance decreases by one; on the
+    loser's move it stays constant. Distance comparisons are search heuristics.
+    """
+    if before["type"] == after["type"] == "cp":
+        loss = calculate_centipawn_loss(before["cp"], after["cp"], color)
+        return {"centipawn_loss": loss, "classification": classify_move(loss),
+                "mate_quality": None}
+
+    mover = "white" if color == chess.WHITE else "black"
+    before_mate = before["type"] == "mate"
+    after_mate = after["type"] == "mate"
+    won_before = before_mate and before["winner"] == mover
+    won_after = after_mate and after["winner"] == mover
+    classification = "Good"
+    if before_mate and not after_mate:
+        quality = "lost_forced_mate" if won_before else "escaped_forced_mate"
+        if won_before:
+            classification = "Blunder"
+    elif not before_mate and after_mate:
+        quality = "achieved_forced_mate" if won_after else "allowed_forced_mate"
+        if not won_after:
+            classification = "Blunder"
+    elif won_before != won_after:
+        quality = "reversed_to_winning_mate" if won_after else "reversed_to_losing_mate"
+        if not won_after:
+            classification = "Blunder"
+    elif after["mate"] == 0:
+        quality = "delivered_checkmate" if won_after else "checkmated"
+        if not won_after:
+            classification = "Inaccuracy"
+    else:
+        expected = max(0, abs(before["mate"]) - (1 if won_before else 0))
+        distance = abs(after["mate"])
+        if won_after:
+            quality = "slower_mate" if distance > expected else "maintained_forced_mate"
+        else:
+            quality = "faster_defeat" if distance < expected else "remains_forced_loss"
+        if quality in ("slower_mate", "faster_defeat"):
+            classification = "Inaccuracy"
+    return {"centipawn_loss": None, "classification": classification,
+            "mate_quality": quality}
 
 
 def analyze_game(game, depth=15):
@@ -105,13 +157,11 @@ def analyze_game(game, depth=15):
 
             after_score = after_analysis["score_cp"]
 
-            cp_loss = calculate_centipawn_loss(
-                before_score,
-                after_score,
+            quality = evaluate_move_quality(
+                before_analysis["evaluation"],
+                after_analysis["evaluation"],
                 moving_color
             )
-
-            classification = classify_move(cp_loss)
 
             results.append({
                 "ply": ply,
@@ -131,6 +181,8 @@ def analyze_game(game, depth=15):
 
                 "evaluation_before": before_score,
                 "evaluation_after": after_score,
+                "evaluation_before_detail": before_analysis["evaluation"],
+                "evaluation_after_detail": after_analysis["evaluation"],
 
                 "best_move": (
                     best_move.uci()
@@ -138,8 +190,7 @@ def analyze_game(game, depth=15):
                     else None
                 ),
 
-                "centipawn_loss": cp_loss,
-                "classification": classification
+                **quality,
             })
 
             # Key optimization:
@@ -155,6 +206,10 @@ def analyze_game(game, depth=15):
 def calculate_game_statistics(results):
     """
     Calculate game-level statistics separately for White and Black.
+
+    ACPL = total genuine CP loss / cp_moves; None when cp_moves is zero.
+    moves and classification counts include every move. mate_moves/mate_errors
+    separately expose excluded transitions and heuristic mate-quality errors.
 
     Also calculate statistics for each game phase:
     - Opening
@@ -216,6 +271,11 @@ def calculate_game_statistics(results):
         }
     }
 
+    # CP-comparable counts are explicit; mate moves remain in moves/classifications.
+    for player in stats.values():
+        for data in [player, *player["phases"].values()]:
+            data.update(cp_moves=0, mate_moves=0, mate_errors=0)
+
     # ---------------------------------------
     # Process every analyzed move
     # ---------------------------------------
@@ -229,14 +289,18 @@ def calculate_game_statistics(results):
 
         # Overall statistics
         stats[color]["moves"] += 1
-        stats[color]["total_centipawn_loss"] += cp_loss
 
         # Phase statistics
         stats[color]["phases"][phase]["moves"] += 1
 
-        stats[color]["phases"][phase][
-            "total_centipawn_loss"
-        ] += cp_loss
+        for data in (stats[color], stats[color]["phases"][phase]):
+            if cp_loss is not None:
+                data["total_centipawn_loss"] += cp_loss
+                data["cp_moves"] += 1
+            else:
+                data["mate_moves"] += 1
+                if classification in ("inaccuracy", "mistake", "blunder"):
+                    data["mate_errors"] += 1
 
         # Move classification statistics
         if classification == "excellent":
@@ -260,7 +324,7 @@ def calculate_game_statistics(results):
 
     for color in ["white", "black"]:
 
-        move_count = stats[color]["moves"]
+        move_count = stats[color]["cp_moves"]
 
         # Overall ACPL
         if move_count > 0:
@@ -269,7 +333,7 @@ def calculate_game_statistics(results):
                 / move_count
             )
         else:
-            stats[color]["acpl"] = 0
+            stats[color]["acpl"] = None
 
         # Phase ACPL
         for phase in [
@@ -280,7 +344,7 @@ def calculate_game_statistics(results):
 
             phase_stats = stats[color]["phases"][phase]
 
-            phase_move_count = phase_stats["moves"]
+            phase_move_count = phase_stats["cp_moves"]
 
             if phase_move_count > 0:
 
@@ -290,7 +354,7 @@ def calculate_game_statistics(results):
                 )
 
             else:
-                phase_stats["acpl"] = 0
+                phase_stats["acpl"] = None
 
     return stats
 
@@ -372,7 +436,7 @@ if __name__ == "__main__":
 
         print(
             f'ACPL: '
-            f'{player_stats["acpl"]:.2f}'
+            f'{player_stats["acpl"]}'
         )
 
         print(
@@ -419,7 +483,7 @@ if __name__ == "__main__":
             print(
                 f'{phase.capitalize()} | '
                 f'Moves: {phase_stats["moves"]} | '
-                f'ACPL: {phase_stats["acpl"]:.2f}'
+                f'ACPL: {phase_stats["acpl"]}'
             )
             
     weaknesses = detect_weakest_phase(stats)
@@ -434,7 +498,7 @@ if __name__ == "__main__":
             continue
 
         print(f'Weakest phase: {weakness["phase"]}')
-        print(f'ACPL: {weakness["acpl"]:.2f}')
+        print(f'ACPL: {weakness["acpl"]}')
         print(f'Moves analyzed: {weakness["moves"]}')
  
     

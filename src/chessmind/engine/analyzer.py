@@ -5,6 +5,23 @@ import chess.engine
 STOCKFISH_PATH = "tools/stockfish/stockfish.exe"
 
 
+def serialize_evaluation(score):
+    """Serialize a native score already normalized to White's perspective.
+
+    winner disambiguates Mate(0) (White lost) from MateGiven (White won),
+    whose mate() values are both zero. No synthetic CP enters this structure.
+    """
+    is_mate = score.is_mate()
+    return {
+        "type": "mate" if is_mate else "cp",
+        "cp": score.score(),
+        "mate": score.mate(),
+        "winner": ("white" if score > chess.engine.Cp(0) else "black")
+        if is_mate else None,
+        "perspective": "white",
+    }
+
+
 def analyze_board(engine, board, depth=15):
     """
     Analyze a chess.Board position using an already-running Stockfish engine.
@@ -13,7 +30,9 @@ def analyze_board(engine, board, depth=15):
         Positive score -> White is better
         Negative score -> Black is better
 
-    Score is returned in centipawns.
+    evaluation contains genuine CP or signed mate information.
+    score_cp is the legacy synthetic numeric projection, retained for display
+    compatibility only; it must not be used to calculate mate-related loss.
     """
 
     info = engine.analyse(
@@ -32,6 +51,7 @@ def analyze_board(engine, board, depth=15):
 
     return {
         "score_cp": score_cp,
+        "evaluation": serialize_evaluation(score),
         "best_move": best_move,
         "depth": info.get("depth"),
         "pv": info.get("pv", [])
