@@ -1,8 +1,48 @@
 import chess
 import chess.engine
+from dataclasses import dataclass
+
+from src.chessmind.engine.evaluation_cache_keys import (
+    CacheIdentityUnavailable, EngineIdentity, build_cache_key,
+    build_engine_identity, snapshot_engine_metadata,
+)
 
 
 STOCKFISH_PATH = "tools/stockfish/stockfish.exe"
+
+
+@dataclass(frozen=True)
+class EngineCacheContext:
+    """Identity bound to one borrowed engine; never owns or closes that engine."""
+
+    engine: object
+    identity: EngineIdentity
+
+
+def create_cache_context(engine, executable_path, *, resource_paths=None,
+                         embedded_resources=()):
+    """Build once per engine, between searches, within the owner's cleanup scope.
+
+    Resource declarations have the same explicit-attestation contract as
+    build_engine_identity(). Files must remain unchanged for this engine lifetime.
+    Callers must serialize metadata reads, configuration, and searches.
+    """
+    metadata = snapshot_engine_metadata(engine)
+    identity = build_engine_identity(executable_path, metadata,
+                                     resource_paths=resource_paths,
+                                     embedded_resources=embedded_resources)
+    return EngineCacheContext(engine, identity)
+
+
+def prepare_cache_arguments(engine, cache, executable_path):
+    """Opt-in owner setup; unsupported identity disables caching for this engine."""
+    if cache is None or cache.info().max_entries == 0:
+        return {}
+    try:
+        context = create_cache_context(engine, executable_path)
+    except CacheIdentityUnavailable:
+        return {}
+    return {"cache": cache, "cache_context": context}
 
 
 def serialize_evaluation(score):
@@ -22,7 +62,7 @@ def serialize_evaluation(score):
     }
 
 
-def analyze_board(engine, board, depth=15):
+def analyze_board(engine, board, depth=15, *, cache=None, cache_context=None):
     """
     Analyze a chess.Board position using an already-running Stockfish engine.
 
@@ -33,11 +73,30 @@ def analyze_board(engine, board, depth=15):
     evaluation contains genuine CP or signed mate information.
     score_cp is the legacy synthetic numeric projection, retained for display
     compatibility only; it must not be used to calculate mate-related loss.
+
+    Cache use requires a context created for this exact engine. Missing or
+    unsupported identity falls back to a normal search. Calls on an engine must
+    be sequential, including external configuration changes.
     """
+
+    limit = chess.engine.Limit(depth=depth)
+    key = None
+    if (cache is not None and cache.info().max_entries > 0
+            and isinstance(cache_context, EngineCacheContext)
+            and cache_context.engine is engine):
+        try:
+            metadata = snapshot_engine_metadata(engine)
+            key = build_cache_key(cache_context.identity, metadata, board, limit)
+        except CacheIdentityUnavailable:
+            pass
+        if key is not None:
+            cached = cache.get(key)
+            if cached is not None:
+                return cached
 
     info = engine.analyse(
         board,
-        chess.engine.Limit(depth=depth)
+        limit
     )
 
     # Always evaluate from White's perspective
@@ -49,16 +108,28 @@ def analyze_board(engine, board, depth=15):
 
     best_move = info["pv"][0] if info.get("pv") else None
 
-    return {
+    result = {
         "score_cp": score_cp,
         "evaluation": serialize_evaluation(score),
         "best_move": best_move,
         "depth": info.get("depth"),
         "pv": info.get("pv", [])
     }
+    # analyse() normally returns a completed search. Bound/explicitly partial
+    # responses are never reusable. Missing depth/PV is conservatively bypassed
+    # except at terminal positions, where no PV is expected.
+    if key is not None:
+        complete = (not any(info.get(flag) for flag in
+                            ("lowerbound", "upperbound", "partial", "incomplete"))
+                    and info.get("complete") is not False)
+        sufficient = (board.is_checkmate() or board.is_stalemate()
+                      or (info.get("depth") is not None and bool(info.get("pv"))))
+        if complete and sufficient:
+            cache.put(key, result)
+    return result
 
 
-def analyze_position(fen, depth=15):
+def analyze_position(fen, depth=15, *, cache=None):
     """
     Analyze a FEN position.
 
@@ -70,7 +141,8 @@ def analyze_position(fen, depth=15):
     engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
 
     try:
-        return analyze_board(engine, board, depth)
+        cache_arguments = prepare_cache_arguments(engine, cache, STOCKFISH_PATH)
+        return analyze_board(engine, board, depth, **cache_arguments)
 
     finally:
         engine.quit()

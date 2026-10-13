@@ -7,7 +7,8 @@ from src.chessmind.reports.weakness_report import generate_weakness_report
 
 from src.chessmind.engine.analyzer import (
     STOCKFISH_PATH,
-    analyze_board
+    analyze_board,
+    prepare_cache_arguments,
 )
 
 from src.chessmind.analysis.weakness_analyzer import (
@@ -103,7 +104,7 @@ def evaluate_move_quality(before, after, color):
             "mate_quality": quality}
 
 
-def analyze_game(game, depth=15):
+def analyze_game(game, depth=15, *, cache=None):
     """
     Analyze every move of a PGN game with Stockfish.
 
@@ -120,11 +121,13 @@ def analyze_game(game, depth=15):
     engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
 
     try:
+        cache_arguments = prepare_cache_arguments(engine, cache, STOCKFISH_PATH)
         # Analyze the initial position only once
         before_analysis = analyze_board(
             engine,
             board,
-            depth=depth
+            depth=depth,
+            **cache_arguments,
         )
 
         for ply, move in enumerate(game.mainline_moves(), start=1):
@@ -154,7 +157,8 @@ def analyze_game(game, depth=15):
             after_analysis = analyze_board(
                 engine,
                 board,
-                depth=depth
+                depth=depth,
+                **cache_arguments,
             )
 
             after_score = after_analysis["score_cp"]

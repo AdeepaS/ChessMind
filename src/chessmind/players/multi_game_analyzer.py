@@ -9,7 +9,7 @@ from src.chessmind.players.player_statistics import (
 )
 
 
-def analyze_player_games(player_games, depth=12):
+def analyze_player_games(player_games, depth=12, *, cache=None):
     """
     Analyze multiple games belonging to a player.
 
@@ -23,6 +23,8 @@ def analyze_player_games(player_games, depth=12):
     """
 
     analyzed_games = []
+    cache_arguments = ({"cache": cache}
+                       if cache is not None and cache.info().max_entries > 0 else {})
 
     for entry in player_games:
 
@@ -32,7 +34,7 @@ def analyze_player_games(player_games, depth=12):
         print(f"Analyzing game {game_number}...")
 
         # Reuse existing single-game analysis
-        analysis = analyze_game(game, depth=depth)
+        analysis = analyze_game(game, depth=depth, **cache_arguments)
 
         # Reuse existing game statistics
         stats = calculate_game_statistics(analysis)
