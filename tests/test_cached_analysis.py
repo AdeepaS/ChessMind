@@ -1,6 +1,7 @@
 """Opt-in integration, deterministic UCI doubles, and a small real-engine smoke."""
 
 from copy import deepcopy
+from dataclasses import replace
 import io
 import json
 from pathlib import Path
@@ -14,6 +15,7 @@ import pytest
 from src.chessmind.engine import analyzer as engine_module
 from src.chessmind.engine.evaluation_cache import EvaluationCache
 from src.chessmind.engine import evaluation_cache_keys as keys
+from src.chessmind.engine.embedded_resource_attestations import VERIFIED_EMBEDDED_RESOURCES
 from src.chessmind.analysis import game_analyzer
 from src.chessmind.players.multi_game_analyzer import analyze_player_games
 from src.chessmind.pgn.multi_game_parser import load_multiple_pgn
@@ -129,6 +131,39 @@ def test_unavailable_identity_disabled_once_per_game(engines):
     assert engines[0][0].analyse.call_count == 5
     engines[0][0].quit.assert_called_once()
     assert cache.info().misses == 0
+
+
+def network_metadata(value):
+    base = metadata()
+    return replace(base, reported_id=(("name", "Stockfish 19"),),
+                   options=base.options + (keys.OptionSpec("evalfile", "string", value, None, None, ()),),
+                   config=base.config + (("evalfile", value),),
+                   target_config=base.target_config + (("evalfile", value),))
+
+
+def test_failed_attestation_keeps_normal_analysis(engines):
+    engines[2].return_value = network_metadata(VERIFIED_EMBEDDED_RESOURCES[0].value)
+    cache = EvaluationCache()
+    result = engine_module.analyze_position(chess.STARTING_FEN, cache=cache)
+    assert result["evaluation"]["perspective"] == "white"
+    assert engines[0][0].analyse.call_count == 1
+    engines[0][0].quit.assert_called_once()
+    assert cache.info().hits == cache.info().misses == cache.info().size == 0
+
+
+def test_resource_change_after_attested_context_cannot_hit(engines):
+    record = VERIFIED_EMBEDDED_RESOURCES[0]
+    engines[2].return_value = network_metadata(record.value)
+    engines[3].return_value = ("audited.exe", record.executable_sha256)
+    engine, context = borrowed(engines)
+    cache = EvaluationCache()
+    evaluate(engine, context, cache)
+    evaluate(engine, context, cache)
+    engines[2].return_value = network_metadata("custom.nnue")
+    evaluate(engine, context, cache)
+    assert engine.analyse.call_count == 2
+    assert (cache.info().misses, cache.info().hits) == (1, 1)
+    engines[3].assert_called_once()
 
 
 @pytest.mark.parametrize("failure", [RuntimeError("bug"), chess.engine.EngineError("search failed")])
@@ -309,8 +344,7 @@ def test_baseline_historical_mate_and_phase_replay(engines):
 
 @pytest.mark.skipif(not (ROOT / engine_module.STOCKFISH_PATH).is_file(), reason="Project Stockfish unavailable")
 def test_real_stockfish_smoke(monkeypatch):
-    # Keep production resource policy: no assumption that default EvalFile is
-    # embedded. This exercises real metadata and safe fallback if unidentified.
+    # Require hits for the audited binary; retain safe fallback for other builds.
     monkeypatch.chdir(ROOT)
     launch = chess.engine.SimpleEngine.popen_uci
     created = []
@@ -331,3 +365,7 @@ def test_real_stockfish_smoke(monkeypatch):
         engine.quit.assert_called_once()
         assert engine.returncode.result(timeout=10) == 0
     assert sum(e.analyse.call_count for e in created) + cache.info().hits == 2
+    _, digest = keys._fingerprint(ROOT / engine_module.STOCKFISH_PATH)
+    if digest == VERIFIED_EMBEDDED_RESOURCES[0].executable_sha256:
+        assert (cache.info().misses, cache.info().hits) == (1, 1)
+        assert [e.analyse.call_count for e in created] == [1, 0]

@@ -62,7 +62,7 @@ def serialize_evaluation(score):
     }
 
 
-def analyze_board(engine, board, depth=15, *, cache=None, cache_context=None):
+def analyze_board(engine, board, depth=15, *, cache=None, cache_context=None, game=None):
     """
     Analyze a chess.Board position using an already-running Stockfish engine.
 
@@ -77,6 +77,8 @@ def analyze_board(engine, board, depth=15, *, cache=None, cache_context=None):
     Cache use requires a context created for this exact engine. Missing or
     unsupported identity falls back to a normal search. Calls on an engine must
     be sequential, including external configuration changes.
+    game is a python-chess session token, forwarded only on actual searches and
+    deliberately excluded from cache identity.
     """
 
     limit = chess.engine.Limit(depth=depth)
@@ -96,7 +98,8 @@ def analyze_board(engine, board, depth=15, *, cache=None, cache_context=None):
 
     info = engine.analyse(
         board,
-        limit
+        limit,
+        **({"game": game} if game is not None else {}),
     )
 
     # Always evaluate from White's perspective

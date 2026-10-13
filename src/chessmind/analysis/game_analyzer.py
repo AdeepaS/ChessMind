@@ -104,7 +104,7 @@ def evaluate_move_quality(before, after, color):
             "mate_quality": quality}
 
 
-def analyze_game(game, depth=15, *, cache=None):
+def analyze_game(game, depth=15, *, cache=None, engine=None, cache_context=None):
     """
     Analyze every move of a PGN game with Stockfish.
 
@@ -112,16 +112,27 @@ def analyze_game(game, depth=15, *, cache=None):
     - Analyze the initial position once.
     - After each move, analyze the resulting position.
     - Reuse that result as the "before" analysis of the next move.
+
+    An injected engine is borrowed and never closed here. Its owner supplies
+    any cache context; missing context safely disables caching. Each borrowed
+    game gets a fresh python-chess token, including when initial requests hit.
     """
 
     board = game.board()
     results = []
     previous_phase = None
 
-    engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
+    owns_engine = engine is None
+    if owns_engine:
+        engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
 
     try:
-        cache_arguments = prepare_cache_arguments(engine, cache, STOCKFISH_PATH)
+        if owns_engine:
+            cache_arguments = prepare_cache_arguments(engine, cache, STOCKFISH_PATH)
+        else:
+            cache_arguments = {"game": object()}
+            if cache is not None and cache.info().max_entries > 0:
+                cache_arguments.update(cache=cache, cache_context=cache_context)
         # Analyze the initial position only once
         before_analysis = analyze_board(
             engine,
@@ -204,7 +215,8 @@ def analyze_game(game, depth=15, *, cache=None):
             before_analysis = after_analysis
 
     finally:
-        engine.quit()
+        if owns_engine:
+            engine.quit()
 
     return results
 

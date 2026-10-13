@@ -23,6 +23,8 @@ from typing import Mapping
 import chess
 import chess.engine
 
+from src.chessmind.engine.embedded_resource_attestations import verified_embedded_resource
+
 
 Scalar = str | int | float | bool | None
 Pairs = tuple[tuple[str, Scalar], ...]
@@ -195,7 +197,8 @@ def build_engine_identity(executable_path: str | Path, metadata: EngineMetadata,
     resource_paths explicitly resolves EvalFile/EvalFileSmall to actual files.
     embedded_resources is a caller attestation that named options use networks
     embedded in this binary, not external files with the same name. Defaults are
-    NOT assumed embedded. Unknown external resources/tablebases cause bypass.
+    NOT assumed embedded: automatic attestation requires an audited binary hash
+    and exact resource value. Unknown external resources/tablebases cause bypass.
     Rebuild identity if evaluation resources are reconfigured.
     """
     _version()
@@ -213,7 +216,7 @@ def build_engine_identity(executable_path: str | Path, metadata: EngineMetadata,
     for name, value in sorted(values.items()):
         if name in explicit:
             resource_path, resource_digest = _fingerprint(explicit[name])
-        elif name in embedded:
+        elif name in embedded or verified_embedded_resource(digest, name, value):
             resource_path, resource_digest = "embedded", digest
         else:
             raise CacheIdentityUnavailable(f"Unidentified evaluation resource: {name}")

@@ -12,6 +12,7 @@ import chess.variant
 import pytest
 
 from src.chessmind.engine import evaluation_cache_keys as keys
+from src.chessmind.engine.embedded_resource_attestations import VERIFIED_EMBEDDED_RESOURCES
 
 
 def metadata(**changes):
@@ -167,6 +168,65 @@ def test_resource_fingerprints_and_changed_configuration(tmp_path):
         keys.build_engine_identity(binary, meta)
     embedded = keys.build_engine_identity(binary, meta, embedded_resources=("EvalFile",))
     assert embedded.resources[0][2] == "embedded"
+
+
+@pytest.fixture
+def audited_binary(monkeypatch):
+    record = VERIFIED_EMBEDDED_RESOURCES[0]
+    fingerprint = Mock(return_value=("audited.exe", record.executable_sha256))
+    monkeypatch.setattr(keys, "_fingerprint", fingerprint)
+    meta = replace(resource_metadata(record.value),
+                   reported_id=(("name", "Stockfish 19"),))
+    return record, meta, fingerprint
+
+
+def test_verified_embedded_identity_hashes_once(audited_binary):
+    record, meta, fingerprint = audited_binary
+    identity = keys.build_engine_identity("audited.exe", meta)
+    assert identity.resources == (("evalfile", record.value, "embedded",
+                                   record.executable_sha256),)
+    for _ in range(3):
+        key(identity, meta=meta)
+    fingerprint.assert_called_once_with("audited.exe")
+
+
+@pytest.mark.parametrize("name", ["Stockfish 19", "Unknown engine"])
+def test_unknown_binary_never_gains_automatic_attestation(audited_binary, name):
+    _, meta, fingerprint = audited_binary
+    fingerprint.return_value = ("other.exe", "0" * 64)
+    with pytest.raises(keys.CacheIdentityUnavailable, match="Unidentified"):
+        keys.build_engine_identity("other.exe", replace(meta, reported_id=(("name", name),)))
+
+
+def test_changed_network_requires_independent_identity(audited_binary):
+    _, meta, _ = audited_binary
+    meta = replace(meta, target_config=meta.target_config + (("evalfile", "custom.nnue"),))
+    with pytest.raises(keys.CacheIdentityUnavailable, match="Unidentified"):
+        keys.build_engine_identity("audited.exe", meta)
+    identity = keys.build_engine_identity("audited.exe", meta,
+                                          resource_paths={"EvalFile": "custom.nnue"})
+    assert identity.resources[0][1] == "custom.nnue"
+    assert identity.resources[0][2] != "embedded"
+
+
+@pytest.mark.parametrize("option", ["evalfilesmall", "evalfileother"])
+def test_extra_network_requires_independent_identity(audited_binary, option):
+    _, meta, _ = audited_binary
+    meta = replace(meta,
+                   options=meta.options + (keys.OptionSpec(option, "string", "extra.nnue", None, None, ()),),
+                   config=meta.config + ((option, "extra.nnue"),))
+    with pytest.raises(keys.CacheIdentityUnavailable, match="Unidentified"):
+        keys.build_engine_identity("audited.exe", meta)
+    identity = keys.build_engine_identity("audited.exe", meta,
+                                          resource_paths={option: "extra.nnue"})
+    key(identity, meta=meta)
+
+
+def test_verified_binary_still_rejects_external_tablebases(audited_binary):
+    _, meta, _ = audited_binary
+    meta = replace(meta, config=meta.config + (("syzygypath", "/tables"),))
+    with pytest.raises(keys.CacheIdentityUnavailable, match="tablebase"):
+        keys.build_engine_identity("audited.exe", meta)
 
 
 def test_key_immutability_and_hashability(identity):
