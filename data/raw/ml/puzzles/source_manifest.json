@@ -1,0 +1,14 @@
+{
+  "dataset_url": "https://database.lichess.org/lichess_db_puzzle.csv.zst",
+  "source_page": "https://database.lichess.org/#puzzles",
+  "acquired_at_utc": "2026-10-14T05:47:35.594151+00:00",
+  "sample_file": "lichess_puzzle_sample.csv",
+  "sample_count": 1000,
+  "sha256": "09709b9bf8bff1e82e32c3625c519b7cf25da7d0a95334be58bb772e3f507dc5",
+  "sampling_method": "first valid unique records in export order; not random",
+  "processed_rows": 1000,
+  "rejected_rows": 0,
+  "rejection_counts": {},
+  "error_examples": [],
+  "compressed_bytes_read": 98304
+}

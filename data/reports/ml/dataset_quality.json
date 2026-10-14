@@ -1,0 +1,4761 @@
+{
+  "distinct_themes": 63,
+  "duplicate_theme_tokens": 0,
+  "general": {
+    "duplicate_record_ids": 0,
+    "ratings": {
+      "count": 1000,
+      "max": 3050,
+      "mean": 1441.965,
+      "median": 1399.5,
+      "min": 399,
+      "population_stddev": 544.8228811044926
+    },
+    "total_puzzles": 1000,
+    "unique_puzzles": 1000
+  },
+  "metadata": {
+    "missing_optional": {
+      "daily_date_column_absent": 0,
+      "daily_date_empty": 1000,
+      "opening_tags_empty": 793,
+      "themes_empty": 0
+    },
+    "number_of_plays": {
+      "count": 1000,
+      "max": 37506,
+      "mean": 1573.703,
+      "median": 419.0,
+      "min": 4,
+      "population_stddev": 3691.780294219985
+    },
+    "popularity": {
+      "count": 1000,
+      "max": 100,
+      "mean": 86.898,
+      "median": 90.0,
+      "min": 0,
+      "population_stddev": 12.928712078161537
+    }
+  },
+  "rare_themes": [
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme": "doubleCheck"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme": "smotheredMate"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme": "equality"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme": "interference"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "capturingDefender"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "hookMate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "mateIn4"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "morphysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "bodenMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "cornerMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "enPassant"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "epauletteMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "arabianMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "doubleBishopMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "vukovicMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "xRayAttack"
+    }
+  ],
+  "rare_threshold": 5,
+  "rating_distribution": [
+    {
+      "count": 16,
+      "lower_inclusive": 0,
+      "percentage": 1.6,
+      "upper_exclusive": 500
+    },
+    {
+      "count": 230,
+      "lower_inclusive": 500,
+      "percentage": 23.0,
+      "upper_exclusive": 1000
+    },
+    {
+      "count": 327,
+      "lower_inclusive": 1000,
+      "percentage": 32.7,
+      "upper_exclusive": 1500
+    },
+    {
+      "count": 246,
+      "lower_inclusive": 1500,
+      "percentage": 24.6,
+      "upper_exclusive": 2000
+    },
+    {
+      "count": 148,
+      "lower_inclusive": 2000,
+      "percentage": 14.8,
+      "upper_exclusive": 2500
+    },
+    {
+      "count": 32,
+      "lower_inclusive": 2500,
+      "percentage": 3.2,
+      "upper_exclusive": 3000
+    },
+    {
+      "count": 1,
+      "lower_inclusive": 3000,
+      "percentage": 0.1,
+      "upper_exclusive": null
+    }
+  ],
+  "source": {
+    "input_file": "data/raw/ml/puzzles/lichess_puzzle_sample.csv",
+    "manifest": {
+      "acquired_at_utc": "2026-10-14T05:47:35.594151+00:00",
+      "compressed_bytes_read": 98304,
+      "dataset_url": "https://database.lichess.org/lichess_db_puzzle.csv.zst",
+      "error_examples": [],
+      "processed_rows": 1000,
+      "rejected_rows": 0,
+      "rejection_counts": {},
+      "sample_count": 1000,
+      "sample_file": "lichess_puzzle_sample.csv",
+      "sampling_method": "first valid unique records in export order; not random",
+      "sha256": "09709b9bf8bff1e82e32c3625c519b7cf25da7d0a95334be58bb772e3f507dc5",
+      "source_page": "https://database.lichess.org/#puzzles"
+    },
+    "manifest_count_matches": true,
+    "manifest_hash_verified": true,
+    "sha256": "09709b9bf8bff1e82e32c3625c519b7cf25da7d0a95334be58bb772e3f507dc5"
+  },
+  "theme_cooccurrence": [
+    {
+      "count": 269,
+      "percentage": 26.9,
+      "theme_a": "endgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 249,
+      "percentage": 24.9,
+      "theme_a": "crushing",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 215,
+      "percentage": 21.5,
+      "theme_a": "crushing",
+      "theme_b": "short"
+    },
+    {
+      "count": 212,
+      "percentage": 21.2,
+      "theme_a": "middlegame",
+      "theme_b": "short"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme_a": "mate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme_a": "mate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme_a": "mateIn1",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 163,
+      "percentage": 16.3,
+      "theme_a": "mate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 155,
+      "percentage": 15.5,
+      "theme_a": "endgame",
+      "theme_b": "mate"
+    },
+    {
+      "count": 146,
+      "percentage": 14.6,
+      "theme_a": "advantage",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 144,
+      "percentage": 14.4,
+      "theme_a": "advantage",
+      "theme_b": "short"
+    },
+    {
+      "count": 141,
+      "percentage": 14.1,
+      "theme_a": "mate",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 141,
+      "percentage": 14.1,
+      "theme_a": "mate",
+      "theme_b": "short"
+    },
+    {
+      "count": 141,
+      "percentage": 14.1,
+      "theme_a": "mateIn2",
+      "theme_b": "short"
+    },
+    {
+      "count": 140,
+      "percentage": 14.0,
+      "theme_a": "endgame",
+      "theme_b": "long"
+    },
+    {
+      "count": 130,
+      "percentage": 13.0,
+      "theme_a": "crushing",
+      "theme_b": "long"
+    },
+    {
+      "count": 125,
+      "percentage": 12.5,
+      "theme_a": "crushing",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 105,
+      "percentage": 10.5,
+      "theme_a": "advantage",
+      "theme_b": "long"
+    },
+    {
+      "count": 105,
+      "percentage": 10.5,
+      "theme_a": "long",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 102,
+      "percentage": 10.2,
+      "theme_a": "advantage",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 94,
+      "percentage": 9.4,
+      "theme_a": "endgame",
+      "theme_b": "master"
+    },
+    {
+      "count": 89,
+      "percentage": 8.9,
+      "theme_a": "master",
+      "theme_b": "short"
+    },
+    {
+      "count": 89,
+      "percentage": 8.9,
+      "theme_a": "mateIn1",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 89,
+      "percentage": 8.9,
+      "theme_a": "middlegame",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 80,
+      "percentage": 8.0,
+      "theme_a": "endgame",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 76,
+      "percentage": 7.6,
+      "theme_a": "crushing",
+      "theme_b": "master"
+    },
+    {
+      "count": 76,
+      "percentage": 7.6,
+      "theme_a": "fork",
+      "theme_b": "short"
+    },
+    {
+      "count": 72,
+      "percentage": 7.2,
+      "theme_a": "kingsideAttack",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 70,
+      "percentage": 7.0,
+      "theme_a": "crushing",
+      "theme_b": "fork"
+    },
+    {
+      "count": 65,
+      "percentage": 6.5,
+      "theme_a": "endgame",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 65,
+      "percentage": 6.5,
+      "theme_a": "endgame",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 63,
+      "percentage": 6.3,
+      "theme_a": "endgame",
+      "theme_b": "fork"
+    },
+    {
+      "count": 59,
+      "percentage": 5.9,
+      "theme_a": "endgame",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 59,
+      "percentage": 5.9,
+      "theme_a": "mateIn2",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 55,
+      "percentage": 5.5,
+      "theme_a": "kingsideAttack",
+      "theme_b": "mate"
+    },
+    {
+      "count": 54,
+      "percentage": 5.4,
+      "theme_a": "fork",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 54,
+      "percentage": 5.4,
+      "theme_a": "master",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 53,
+      "percentage": 5.3,
+      "theme_a": "advantage",
+      "theme_b": "fork"
+    },
+    {
+      "count": 50,
+      "percentage": 5.0,
+      "theme_a": "advancedPawn",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 47,
+      "percentage": 4.7,
+      "theme_a": "middlegame",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 46,
+      "percentage": 4.6,
+      "theme_a": "fork",
+      "theme_b": "long"
+    },
+    {
+      "count": 41,
+      "percentage": 4.1,
+      "theme_a": "crushing",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 40,
+      "percentage": 4.0,
+      "theme_a": "advantage",
+      "theme_b": "master"
+    },
+    {
+      "count": 39,
+      "percentage": 3.9,
+      "theme_a": "long",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 38,
+      "percentage": 3.8,
+      "theme_a": "advancedPawn",
+      "theme_b": "crushing"
+    },
+    {
+      "count": 37,
+      "percentage": 3.7,
+      "theme_a": "backRankMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 36,
+      "percentage": 3.6,
+      "theme_a": "endgame",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 36,
+      "percentage": 3.6,
+      "theme_a": "kingsideAttack",
+      "theme_b": "short"
+    },
+    {
+      "count": 35,
+      "percentage": 3.5,
+      "theme_a": "crushing",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 35,
+      "percentage": 3.5,
+      "theme_a": "defensiveMove",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 34,
+      "percentage": 3.4,
+      "theme_a": "crushing",
+      "theme_b": "defensiveMove"
+    },
+    {
+      "count": 34,
+      "percentage": 3.4,
+      "theme_a": "endgame",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 33,
+      "percentage": 3.3,
+      "theme_a": "master",
+      "theme_b": "mate"
+    },
+    {
+      "count": 33,
+      "percentage": 3.3,
+      "theme_a": "mate",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 31,
+      "percentage": 3.1,
+      "theme_a": "exposedKing",
+      "theme_b": "long"
+    },
+    {
+      "count": 30,
+      "percentage": 3.0,
+      "theme_a": "middlegame",
+      "theme_b": "pin"
+    },
+    {
+      "count": 30,
+      "percentage": 3.0,
+      "theme_a": "middlegame",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 29,
+      "percentage": 2.9,
+      "theme_a": "endgame",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 28,
+      "percentage": 2.8,
+      "theme_a": "kingsideAttack",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 28,
+      "percentage": 2.8,
+      "theme_a": "kingsideAttack",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 28,
+      "percentage": 2.8,
+      "theme_a": "long",
+      "theme_b": "master"
+    },
+    {
+      "count": 27,
+      "percentage": 2.7,
+      "theme_a": "crushing",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 27,
+      "percentage": 2.7,
+      "theme_a": "endgame",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 27,
+      "percentage": 2.7,
+      "theme_a": "pin",
+      "theme_b": "short"
+    },
+    {
+      "count": 27,
+      "percentage": 2.7,
+      "theme_a": "rookEndgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 26,
+      "percentage": 2.6,
+      "theme_a": "deflection",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 26,
+      "percentage": 2.6,
+      "theme_a": "master",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 26,
+      "percentage": 2.6,
+      "theme_a": "master",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 26,
+      "percentage": 2.6,
+      "theme_a": "sacrifice",
+      "theme_b": "short"
+    },
+    {
+      "count": 25,
+      "percentage": 2.5,
+      "theme_a": "advancedPawn",
+      "theme_b": "long"
+    },
+    {
+      "count": 25,
+      "percentage": 2.5,
+      "theme_a": "backRankMate",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 25,
+      "percentage": 2.5,
+      "theme_a": "backRankMate",
+      "theme_b": "short"
+    },
+    {
+      "count": 25,
+      "percentage": 2.5,
+      "theme_a": "crushing",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 24,
+      "percentage": 2.4,
+      "theme_a": "crushing",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 24,
+      "percentage": 2.4,
+      "theme_a": "crushing",
+      "theme_b": "pin"
+    },
+    {
+      "count": 24,
+      "percentage": 2.4,
+      "theme_a": "fork",
+      "theme_b": "master"
+    },
+    {
+      "count": 23,
+      "percentage": 2.3,
+      "theme_a": "advantage",
+      "theme_b": "discoveredAttack"
+    },
+    {
+      "count": 23,
+      "percentage": 2.3,
+      "theme_a": "opening",
+      "theme_b": "short"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "short"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "advantage",
+      "theme_b": "opening"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "backRankMate",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "defensiveMove",
+      "theme_b": "long"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "discoveredAttack",
+      "theme_b": "short"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "long",
+      "theme_b": "mate"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "long",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme_a": "mate",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "advantage",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "crushing",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "crushing",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "crushing",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "discoveredAttack",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "endgame",
+      "theme_b": "pin"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "exposedKing",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 21,
+      "percentage": 2.1,
+      "theme_a": "kingsideAttack",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme_a": "attraction",
+      "theme_b": "long"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme_a": "attraction",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme_a": "defensiveMove",
+      "theme_b": "short"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme_a": "deflection",
+      "theme_b": "short"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme_a": "endgame",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme_a": "long",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 19,
+      "percentage": 1.9,
+      "theme_a": "advancedPawn",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 19,
+      "percentage": 1.9,
+      "theme_a": "advantage",
+      "theme_b": "pin"
+    },
+    {
+      "count": 19,
+      "percentage": 1.9,
+      "theme_a": "long",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 19,
+      "percentage": 1.9,
+      "theme_a": "mateIn2",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 18,
+      "percentage": 1.8,
+      "theme_a": "advantage",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 18,
+      "percentage": 1.8,
+      "theme_a": "attraction",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 18,
+      "percentage": 1.8,
+      "theme_a": "endgame",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 18,
+      "percentage": 1.8,
+      "theme_a": "endgame",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 18,
+      "percentage": 1.8,
+      "theme_a": "hangingPiece",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 18,
+      "percentage": 1.8,
+      "theme_a": "mate",
+      "theme_b": "opening"
+    },
+    {
+      "count": 17,
+      "percentage": 1.7,
+      "theme_a": "discoveredAttack",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 17,
+      "percentage": 1.7,
+      "theme_a": "discoveredAttack",
+      "theme_b": "long"
+    },
+    {
+      "count": 17,
+      "percentage": 1.7,
+      "theme_a": "hangingPiece",
+      "theme_b": "short"
+    },
+    {
+      "count": 17,
+      "percentage": 1.7,
+      "theme_a": "long",
+      "theme_b": "pin"
+    },
+    {
+      "count": 17,
+      "percentage": 1.7,
+      "theme_a": "mate",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 16,
+      "percentage": 1.6,
+      "theme_a": "advancedPawn",
+      "theme_b": "master"
+    },
+    {
+      "count": 16,
+      "percentage": 1.6,
+      "theme_a": "advantage",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 16,
+      "percentage": 1.6,
+      "theme_a": "mateIn1",
+      "theme_b": "opening"
+    },
+    {
+      "count": 16,
+      "percentage": 1.6,
+      "theme_a": "oneMove",
+      "theme_b": "opening"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "advantage",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "backRankMate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "crushing",
+      "theme_b": "discoveredAttack"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "endgame",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "kingsideAttack",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "master",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "mate",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme_a": "short",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "advancedPawn",
+      "theme_b": "advantage"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "advantage",
+      "theme_b": "defensiveMove"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "advantage",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "attraction",
+      "theme_b": "crushing"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "deflection",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "fork",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "master",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme_a": "quietMove",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "advantage",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "bishopEndgame",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "crushing",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "crushing",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "endgame",
+      "theme_b": "knightEndgame"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "kingsideAttack",
+      "theme_b": "long"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "mateIn3",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme_a": "sacrifice",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "crushing",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "crushing",
+      "theme_b": "knightEndgame"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "crushing",
+      "theme_b": "opening"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "defensiveMove",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "deflection",
+      "theme_b": "long"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "hangingPiece",
+      "theme_b": "mate"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "long",
+      "theme_b": "opening"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "long",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme_a": "pawnEndgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "advantage",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "attraction",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "attraction",
+      "theme_b": "fork"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "bishopEndgame",
+      "theme_b": "crushing"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "clearance",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "fork",
+      "theme_b": "opening"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "master",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "mateIn3",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 11,
+      "percentage": 1.1,
+      "theme_a": "middlegame",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "advancedPawn",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "clearance",
+      "theme_b": "long"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "deflection",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "discoveredAttack",
+      "theme_b": "discoveredCheck"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "endgame",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "hangingPiece",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "hangingPiece",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "long",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "mate",
+      "theme_b": "pin"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "mate",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 10,
+      "percentage": 1.0,
+      "theme_a": "pin",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "advantage",
+      "theme_b": "attraction"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "defensiveMove",
+      "theme_b": "master"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "endgame",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "endgame",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "exposedKing",
+      "theme_b": "fork"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "exposedKing",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "hangingPiece",
+      "theme_b": "long"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "kingsideAttack",
+      "theme_b": "master"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "mateIn1",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "oneMove",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_a": "pin",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "advancedPawn",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "advantage",
+      "theme_b": "clearance"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "backRankMate",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "clearance",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "discoveredCheck",
+      "theme_b": "long"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "discoveredCheck",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "endgame",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "intermezzo",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "master",
+      "theme_b": "pin"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "master",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "masterVsMaster",
+      "theme_b": "short"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "mateIn2",
+      "theme_b": "pin"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme_a": "quietMove",
+      "theme_b": "short"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "advancedPawn",
+      "theme_b": "mate"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "advancedPawn",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "advantage",
+      "theme_b": "discoveredCheck"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "advantage",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "advantage",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "attraction",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "attraction",
+      "theme_b": "mate"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "backRankMate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "backRankMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "clearance",
+      "theme_b": "crushing"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "clearance",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "clearance",
+      "theme_b": "short"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "crushing",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "crushing",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "defensiveMove",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "deflection",
+      "theme_b": "master"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "deflection",
+      "theme_b": "mate"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "discoveredAttack",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "endgame",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "endgame",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "exposedKing",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "intermezzo",
+      "theme_b": "short"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "kingsideAttack",
+      "theme_b": "pin"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "knightEndgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "long",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "mate",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "mateIn1",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "mateIn2",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "middlegame",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "oneMove",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme_a": "queensideAttack",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "advancedPawn",
+      "theme_b": "bishopEndgame"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "advantage",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "advantage",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "deflection",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "discoveredAttack",
+      "theme_b": "master"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "fork",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "kingsideAttack",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "kingsideAttack",
+      "theme_b": "opening"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "long",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "master",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "master",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "middlegame",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "pawnEndgame",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "queenEndgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 6,
+      "percentage": 0.6,
+      "theme_a": "short",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attackingF2F7",
+      "theme_b": "mate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attackingF2F7",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attackingF2F7",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attackingF2F7",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attraction",
+      "theme_b": "pin"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attraction",
+      "theme_b": "short"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "attraction",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "bishopEndgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "clearance",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "clearance",
+      "theme_b": "mate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "clearance",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "crushing",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "defensiveMove",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "defensiveMove",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "deflection",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "discoveredCheck",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "exposedKing",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "fork",
+      "theme_b": "mate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "knightEndgame",
+      "theme_b": "long"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "knightEndgame",
+      "theme_b": "master"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "master",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "masterVsMaster",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "mate",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "mate",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "mateIn1",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "mateIn2",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "middlegame",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "middlegame",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "middlegame",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "oneMove",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "operaMate",
+      "theme_b": "short"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "pawnEndgame",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "promotion",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "rookEndgame",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme_a": "skewer",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "advancedPawn",
+      "theme_b": "defensiveMove"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "advantage",
+      "theme_b": "interference"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "advantage",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "attackingF2F7",
+      "theme_b": "opening"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "attraction",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "backRankMate",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "backRankMate",
+      "theme_b": "long"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "backRankMate",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "bishopEndgame",
+      "theme_b": "long"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "clearance",
+      "theme_b": "fork"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "crushing",
+      "theme_b": "discoveredCheck"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "crushing",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "crushing",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "defensiveMove",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "defensiveMove",
+      "theme_b": "pin"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "deflection",
+      "theme_b": "fork"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "deflection",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "deflection",
+      "theme_b": "pin"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "discoveredAttack",
+      "theme_b": "fork"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "discoveredCheck",
+      "theme_b": "doubleCheck"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "discoveredCheck",
+      "theme_b": "short"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "doubleCheck",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "equality",
+      "theme_b": "short"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "exposedKing",
+      "theme_b": "master"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "exposedKing",
+      "theme_b": "mate"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "exposedKing",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "fork",
+      "theme_b": "pin"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "hangingPiece",
+      "theme_b": "master"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "hangingPiece",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "long",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "master",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "mate",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "mateIn1",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "middlegame",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "oneMove",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "operaMate",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "promotion",
+      "theme_b": "short"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "queenRookEndgame",
+      "theme_b": "short"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "queensideAttack",
+      "theme_b": "short"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme_a": "short",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advancedPawn",
+      "theme_b": "clearance"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advancedPawn",
+      "theme_b": "discoveredCheck"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advancedPawn",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advancedPawn",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advancedPawn",
+      "theme_b": "knightEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advancedPawn",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advantage",
+      "theme_b": "attackingF2F7"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "advantage",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "attraction",
+      "theme_b": "discoveredAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "attraction",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "backRankMate",
+      "theme_b": "fork"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "backRankMate",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "bishopEndgame",
+      "theme_b": "master"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "bishopEndgame",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "bishopEndgame",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "capturingDefender",
+      "theme_b": "short"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "clearance",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "defensiveMove",
+      "theme_b": "knightEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "defensiveMove",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "defensiveMove",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "deflection",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "deflection",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredAttack",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredAttack",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredAttack",
+      "theme_b": "mate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredAttack",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredAttack",
+      "theme_b": "opening"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredAttack",
+      "theme_b": "pin"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredCheck",
+      "theme_b": "mate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "discoveredCheck",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "doubleCheck",
+      "theme_b": "mate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "exposedKing",
+      "theme_b": "pin"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "exposedKing",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "fork",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "fork",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "hangingPiece",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "hookMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "interference",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "intermezzo",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "master",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "master",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "master",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "master",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mate",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mate",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mate",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mate",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn1",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn2",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn2",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn3",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn3",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn4",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "mateIn4",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "oneMove",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "opening",
+      "theme_b": "pin"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "pawnEndgame",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "pin",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "promotion",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "promotion",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "rookEndgame",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_a": "sacrifice",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "attraction"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "discoveredAttack"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advancedPawn",
+      "theme_b": "pin"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advantage",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "advantage",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attackingF2F7",
+      "theme_b": "long"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attackingF2F7",
+      "theme_b": "short"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attraction",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attraction",
+      "theme_b": "doubleCheck"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attraction",
+      "theme_b": "master"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attraction",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attraction",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "attraction",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "backRankMate",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "backRankMate",
+      "theme_b": "master"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "backRankMate",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bishopEndgame",
+      "theme_b": "defensiveMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bishopEndgame",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bishopEndgame",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bodenMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bodenMate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bodenMate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "bodenMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "capturingDefender",
+      "theme_b": "crushing"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "capturingDefender",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "clearance",
+      "theme_b": "master"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "clearance",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "clearance",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "cornerMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "cornerMate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "cornerMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "defensiveMove",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "defensiveMove",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "deflection",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "deflection",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "deflection",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "deflection",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "discoveredAttack",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "discoveredAttack",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "discoveredCheck",
+      "theme_b": "fork"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "discoveredCheck",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "discoveredCheck",
+      "theme_b": "pin"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "discoveredCheck",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "doubleCheck",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "doubleCheck",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "doubleCheck",
+      "theme_b": "short"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "doubleCheck",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "enPassant",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "enPassant",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "endgame",
+      "theme_b": "equality"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "endgame",
+      "theme_b": "hookMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "endgame",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "endgame",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "endgame",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "endgame",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "epauletteMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "epauletteMate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "epauletteMate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "epauletteMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "equality",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "exposedKing",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "exposedKing",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "exposedKing",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "fork",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "hangingPiece",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "hangingPiece",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "hangingPiece",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "hookMate",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "hookMate",
+      "theme_b": "short"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "interference",
+      "theme_b": "long"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "intermezzo",
+      "theme_b": "long"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "intermezzo",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "kingsideAttack",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "kingsideAttack",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "kingsideAttack",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "long",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "long",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "long",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "master",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "master",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "master",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "master",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "masterVsMaster",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "masterVsMaster",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mate",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn1",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn2",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn2",
+      "theme_b": "opening"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn2",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn2",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn4",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "mateIn4",
+      "theme_b": "pin"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "middlegame",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "middlegame",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "morphysMate",
+      "theme_b": "short"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "oneMove",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "opening",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "pillsburysMate",
+      "theme_b": "short"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "pin",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "promotion",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "quietMove",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme_a": "quietMove",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "attackingF2F7"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "doubleCheck"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "fork"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "opening"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advancedPawn",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advantage",
+      "theme_b": "bishopEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advantage",
+      "theme_b": "capturingDefender"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advantage",
+      "theme_b": "doubleCheck"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advantage",
+      "theme_b": "enPassant"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advantage",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "advantage",
+      "theme_b": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "arabianMate",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "arabianMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "arabianMate",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "arabianMate",
+      "theme_b": "short"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attackingF2F7",
+      "theme_b": "crushing"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attackingF2F7",
+      "theme_b": "fork"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attackingF2F7",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "defensiveMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "discoveredCheck"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "opening"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "attraction",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "backRankMate",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "backRankMate",
+      "theme_b": "pin"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "backRankMate",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "backRankMate",
+      "theme_b": "xRayAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "bishopEndgame",
+      "theme_b": "mate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "bishopEndgame",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "bishopEndgame",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "bishopEndgame",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "bodenMate",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "capturingDefender",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "defensiveMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "deflection"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "hangingPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "opening"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "pin"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "clearance",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "cornerMate",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "cornerMate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "crushing",
+      "theme_b": "doubleCheck"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "crushing",
+      "theme_b": "enPassant"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "crushing",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "crushing",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "enPassant"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "equality"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "defensiveMove",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "deflection",
+      "theme_b": "discoveredAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "deflection",
+      "theme_b": "discoveredCheck"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "deflection",
+      "theme_b": "doubleCheck"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "deflection",
+      "theme_b": "equality"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "deflection",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "deflection",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredAttack",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "exposedKing"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "master"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "opening"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "discoveredCheck",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleBishopMate",
+      "theme_b": "mate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleBishopMate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleBishopMate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleBishopMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "endgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "fork"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "long"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "pin"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "doubleCheck",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "enPassant",
+      "theme_b": "long"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "enPassant",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "interference"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "vukovicMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "endgame",
+      "theme_b": "xRayAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "equality",
+      "theme_b": "pin"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "equality",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "exposedKing",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "exposedKing",
+      "theme_b": "opening"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "exposedKing",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "exposedKing",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "fork",
+      "theme_b": "intermezzo"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "fork",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "fork",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "fork",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "fork",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "hangingPiece",
+      "theme_b": "knightEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "hangingPiece",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "hookMate",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "hookMate",
+      "theme_b": "middlegame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "hookMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "interference",
+      "theme_b": "kingsideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "interference",
+      "theme_b": "short"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "interference",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "intermezzo",
+      "theme_b": "master"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "intermezzo",
+      "theme_b": "pin"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "intermezzo",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "intermezzo",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "kingsideAttack",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "kingsideAttack",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "kingsideAttack",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "kingsideAttack",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "kingsideAttack",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "masterVsMaster"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "mate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "mateIn2"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "quietMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "knightEndgame",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "long",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "master",
+      "theme_b": "mateIn3"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "master",
+      "theme_b": "mateIn4"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "master",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "master",
+      "theme_b": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "mate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "mateIn1"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "rookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "masterVsMaster",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mate",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mate",
+      "theme_b": "vukovicMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mate",
+      "theme_b": "xRayAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn1",
+      "theme_b": "morphysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn1",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn1",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn1",
+      "theme_b": "vukovicMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn2",
+      "theme_b": "pawnEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn2",
+      "theme_b": "queenEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn2",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn2",
+      "theme_b": "xRayAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn3",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn3",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn3",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn4",
+      "theme_b": "operaMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn4",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "mateIn4",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "middlegame",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "morphysMate",
+      "theme_b": "oneMove"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "oneMove",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "oneMove",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "oneMove",
+      "theme_b": "vukovicMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "opening",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "opening",
+      "theme_b": "smotheredMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "opening",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "opening",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "operaMate",
+      "theme_b": "pillsburysMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "operaMate",
+      "theme_b": "pin"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "operaMate",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "pillsburysMate",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "pin",
+      "theme_b": "promotion"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "promotion",
+      "theme_b": "queenRookEndgame"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "promotion",
+      "theme_b": "queensideAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "queenEndgame",
+      "theme_b": "skewer"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "queensideAttack",
+      "theme_b": "veryLong"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "quietMove",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "rookEndgame",
+      "theme_b": "sacrifice"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "rookEndgame",
+      "theme_b": "trappedPiece"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "rookEndgame",
+      "theme_b": "zugzwang"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "short",
+      "theme_b": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "short",
+      "theme_b": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "short",
+      "theme_b": "xRayAttack"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "skewer",
+      "theme_b": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_a": "veryLong",
+      "theme_b": "zugzwang"
+    }
+  ],
+  "theme_count_distribution": [
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_count": 1
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_count": 2
+    },
+    {
+      "count": 155,
+      "percentage": 15.5,
+      "theme_count": 3
+    },
+    {
+      "count": 392,
+      "percentage": 39.2,
+      "theme_count": 4
+    },
+    {
+      "count": 276,
+      "percentage": 27.6,
+      "theme_count": 5
+    },
+    {
+      "count": 124,
+      "percentage": 12.4,
+      "theme_count": 6
+    },
+    {
+      "count": 36,
+      "percentage": 3.6,
+      "theme_count": 7
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme_count": 8
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme_count": 9
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme_count": 10
+    }
+  ],
+  "themes": [
+    {
+      "count": 511,
+      "percentage": 51.1,
+      "theme": "endgame"
+    },
+    {
+      "count": 504,
+      "percentage": 50.4,
+      "theme": "short"
+    },
+    {
+      "count": 437,
+      "percentage": 43.7,
+      "theme": "middlegame"
+    },
+    {
+      "count": 386,
+      "percentage": 38.6,
+      "theme": "crushing"
+    },
+    {
+      "count": 336,
+      "percentage": 33.6,
+      "theme": "mate"
+    },
+    {
+      "count": 270,
+      "percentage": 27.0,
+      "theme": "advantage"
+    },
+    {
+      "count": 257,
+      "percentage": 25.7,
+      "theme": "long"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme": "mateIn1"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme": "oneMove"
+    },
+    {
+      "count": 150,
+      "percentage": 15.0,
+      "theme": "master"
+    },
+    {
+      "count": 141,
+      "percentage": 14.1,
+      "theme": "mateIn2"
+    },
+    {
+      "count": 128,
+      "percentage": 12.8,
+      "theme": "fork"
+    },
+    {
+      "count": 79,
+      "percentage": 7.9,
+      "theme": "kingsideAttack"
+    },
+    {
+      "count": 78,
+      "percentage": 7.8,
+      "theme": "sacrifice"
+    },
+    {
+      "count": 65,
+      "percentage": 6.5,
+      "theme": "veryLong"
+    },
+    {
+      "count": 59,
+      "percentage": 5.9,
+      "theme": "advancedPawn"
+    },
+    {
+      "count": 59,
+      "percentage": 5.9,
+      "theme": "rookEndgame"
+    },
+    {
+      "count": 54,
+      "percentage": 5.4,
+      "theme": "pin"
+    },
+    {
+      "count": 52,
+      "percentage": 5.2,
+      "theme": "opening"
+    },
+    {
+      "count": 49,
+      "percentage": 4.9,
+      "theme": "defensiveMove"
+    },
+    {
+      "count": 42,
+      "percentage": 4.2,
+      "theme": "deflection"
+    },
+    {
+      "count": 41,
+      "percentage": 4.1,
+      "theme": "discoveredAttack"
+    },
+    {
+      "count": 41,
+      "percentage": 4.1,
+      "theme": "quietMove"
+    },
+    {
+      "count": 40,
+      "percentage": 4.0,
+      "theme": "exposedKing"
+    },
+    {
+      "count": 38,
+      "percentage": 3.8,
+      "theme": "hangingPiece"
+    },
+    {
+      "count": 37,
+      "percentage": 3.7,
+      "theme": "backRankMate"
+    },
+    {
+      "count": 30,
+      "percentage": 3.0,
+      "theme": "attraction"
+    },
+    {
+      "count": 27,
+      "percentage": 2.7,
+      "theme": "pawnEndgame"
+    },
+    {
+      "count": 27,
+      "percentage": 2.7,
+      "theme": "skewer"
+    },
+    {
+      "count": 22,
+      "percentage": 2.2,
+      "theme": "mateIn3"
+    },
+    {
+      "count": 20,
+      "percentage": 2.0,
+      "theme": "clearance"
+    },
+    {
+      "count": 19,
+      "percentage": 1.9,
+      "theme": "promotion"
+    },
+    {
+      "count": 15,
+      "percentage": 1.5,
+      "theme": "operaMate"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme": "discoveredCheck"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme": "masterVsMaster"
+    },
+    {
+      "count": 14,
+      "percentage": 1.4,
+      "theme": "queensideAttack"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme": "bishopEndgame"
+    },
+    {
+      "count": 13,
+      "percentage": 1.3,
+      "theme": "knightEndgame"
+    },
+    {
+      "count": 12,
+      "percentage": 1.2,
+      "theme": "intermezzo"
+    },
+    {
+      "count": 9,
+      "percentage": 0.9,
+      "theme": "attackingF2F7"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme": "queenEndgame"
+    },
+    {
+      "count": 8,
+      "percentage": 0.8,
+      "theme": "trappedPiece"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme": "pillsburysMate"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme": "queenRookEndgame"
+    },
+    {
+      "count": 7,
+      "percentage": 0.7,
+      "theme": "zugzwang"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme": "doubleCheck"
+    },
+    {
+      "count": 5,
+      "percentage": 0.5,
+      "theme": "smotheredMate"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme": "equality"
+    },
+    {
+      "count": 4,
+      "percentage": 0.4,
+      "theme": "interference"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "capturingDefender"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "hookMate"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "mateIn4"
+    },
+    {
+      "count": 3,
+      "percentage": 0.3,
+      "theme": "morphysMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "bodenMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "cornerMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "enPassant"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "epauletteMate"
+    },
+    {
+      "count": 2,
+      "percentage": 0.2,
+      "theme": "swallowstailMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "arabianMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "doubleBishopMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "superGM"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "vukovicMate"
+    },
+    {
+      "count": 1,
+      "percentage": 0.1,
+      "theme": "xRayAttack"
+    }
+  ],
+  "themes_per_puzzle": {
+    "count": 1000,
+    "max": 10,
+    "mean": 4.525,
+    "median": 4.0,
+    "min": 1,
+    "population_stddev": 1.1328614213574404
+  },
+  "top_themes": [
+    {
+      "count": 511,
+      "percentage": 51.1,
+      "theme": "endgame"
+    },
+    {
+      "count": 504,
+      "percentage": 50.4,
+      "theme": "short"
+    },
+    {
+      "count": 437,
+      "percentage": 43.7,
+      "theme": "middlegame"
+    },
+    {
+      "count": 386,
+      "percentage": 38.6,
+      "theme": "crushing"
+    },
+    {
+      "count": 336,
+      "percentage": 33.6,
+      "theme": "mate"
+    },
+    {
+      "count": 270,
+      "percentage": 27.0,
+      "theme": "advantage"
+    },
+    {
+      "count": 257,
+      "percentage": 25.7,
+      "theme": "long"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme": "mateIn1"
+    },
+    {
+      "count": 170,
+      "percentage": 17.0,
+      "theme": "oneMove"
+    },
+    {
+      "count": 150,
+      "percentage": 15.0,
+      "theme": "master"
+    },
+    {
+      "count": 141,
+      "percentage": 14.1,
+      "theme": "mateIn2"
+    },
+    {
+      "count": 128,
+      "percentage": 12.8,
+      "theme": "fork"
+    },
+    {
+      "count": 79,
+      "percentage": 7.9,
+      "theme": "kingsideAttack"
+    },
+    {
+      "count": 78,
+      "percentage": 7.8,
+      "theme": "sacrifice"
+    },
+    {
+      "count": 65,
+      "percentage": 6.5,
+      "theme": "veryLong"
+    }
+  ],
+  "total_theme_assignments": 4525,
+  "validation": {
+    "accepted": 1000,
+    "error_examples": [],
+    "mode": "permissive",
+    "processed": 1000,
+    "rejected": 0,
+    "rejection_counts": {}
+  }
+}
