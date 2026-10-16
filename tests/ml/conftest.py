@@ -41,3 +41,44 @@ def candidate_fixture():
             rows.append(row)
         return record, rows
     return build
+
+
+@pytest.fixture
+def labeling_case():
+    """Build a legal isolated candidate with explicit synthetic verification."""
+    from dataclasses import asdict
+    from src.chessmind.ml.data.candidate_schema import candidate_id
+    from src.chessmind.ml.features.extractor import extract_candidate_features
+    from src.chessmind.ml.labeling.schema import VerificationResult
+    from src.chessmind.ml.data.candidate_extraction import _score
+
+    def build(fen="1r5k/8/8/8/8/8/2N5/7K w - - 0 1", move="c2b4", *,
+              before=None, after=None, before_pv=(), after_pv=("b8b4", "h1g1", "b4b5", "g1f1")):
+        board = chess.Board(fen)
+        assert board.is_valid() and board.is_legal(chess.Move.from_uci(move))
+        mover, ply = board.turn, board.ply() + 1
+        before = serialize_evaluation(before if before is not None else chess.engine.Cp(0))
+        after = serialize_evaluation(after if after is not None else chess.engine.Cp(-500))
+        quality = evaluate_move_quality(before, after, mover)
+        c = {"candidate_id": candidate_id("lichess", "abcdefgh", ply), "source": "lichess",
+             "source_game_id": "abcdefgh", "player_identifier": "lichess:fixture",
+             "player_color": "white" if mover else "black", "ply_index": ply,
+             "full_move_number": board.fullmove_number, "fen_before": board.fen(),
+             "played_move_uci": move, "schema_version": "candidate_moves_v1",
+             "source_evidence": {}, "selection_type": "SIGNIFICANT_CP_ERROR",
+             "centipawn_loss": quality["centipawn_loss"], "existing_classification": quality["classification"],
+             "mate_quality": quality["mate_quality"], "score_before": before, "score_after": after,
+             "extraction_configuration": {"cp_loss_threshold": 100}, "analysis_profile": {"configured_depth": 8}}
+        board.push_uci(move)
+        c["fen_after"] = board.fen()
+        feature = asdict(extract_candidate_features(c))
+        # JSON-like lists match artifact representation.
+        import json
+        feature = json.loads(json.dumps(feature))
+        v = VerificationResult("verified", before=_score(before), after=_score(after),
+            before_pv=tuple(before_pv), after_pv=tuple(after_pv), before_depth=12, after_depth=12,
+            centipawn_loss=quality["centipawn_loss"], classification=quality["classification"],
+            mate_quality=quality["mate_quality"],
+            significant_error_supported=quality["centipawn_loss"] >= 100 if quality["centipawn_loss"] is not None else None)
+        return c, feature, v
+    return build

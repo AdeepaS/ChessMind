@@ -1,0 +1,46 @@
+{
+  "accepted": 213,
+  "chess_version": "1.11.2",
+  "configuration": {
+    "attack_definition": "python-chess geometric attacks, including pinned attackers",
+    "delta_convention": "after minus before; explicit colors; bools as 0/1",
+    "doubled_pawns": "excess pawns per file",
+    "king_zone": "king square plus adjacent squares",
+    "max_line_chars": 2000000,
+    "mobility": "legal moves for actual side to move only",
+    "ordinary_piece_safety_excludes_kings": true,
+    "pawn_shield": "own pawns one rank forward on king file and adjacent files",
+    "piece_values": {
+      "bishop": 3,
+      "king": 0,
+      "knight": 3,
+      "pawn": 1,
+      "queen": 9,
+      "rook": 5
+    },
+    "strict": true
+  },
+  "created_at_utc": "2026-10-16T08:09:47.645875+00:00",
+  "elapsed_seconds": 2.2575713999103755,
+  "error_examples": [],
+  "feature_value_count": 163,
+  "input_path": "data\\processed\\ml\\candidate_moves.jsonl",
+  "input_sha256": "8ff3ac6b61895291ae6e8bcf7c340eaf4befb3ca97b88da10c2fd143313f5aa6",
+  "move_context_value_count": 10,
+  "numeric_delta_count": 49,
+  "output_file": "candidate_features.jsonl",
+  "output_sha256": "24deb2bba795e432c127cff30cbc7c41f717f3c92bca712ab50147270b423059",
+  "position_value_count": 52,
+  "rejected": 0,
+  "rejection_counts": {},
+  "schema_version": "chess_features_v1",
+  "source_provenance": {
+    "input_sha256": "48d2798c43cff3eb92c63a3fb20d8ebc0fca6e6a5714f1f7fd49232d5586ca94",
+    "path": "data\\processed\\ml\\candidate_manifest.json",
+    "schema_version": "candidate_moves_v1",
+    "sha256": "8a2727f022222418cb319b29a96b6c47648e1717cda8ef2f4852ad9e8358cdf1",
+    "source_manifest_sha256": "4ec2061bd306bff67f211141d0ad944279dd44855d10c0fef4dce2a912afd0f6"
+  },
+  "total_processed": 213,
+  "unique_candidate_ids": 213
+}

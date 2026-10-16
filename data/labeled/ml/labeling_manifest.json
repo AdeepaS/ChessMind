@@ -1,0 +1,160 @@
+{
+  "abstentions": 20,
+  "cache_after": {
+    "evictions": 0,
+    "hits": 0,
+    "max_entries": 4096,
+    "misses": 48,
+    "size": 48
+  },
+  "cache_before": {
+    "evictions": 0,
+    "hits": 0,
+    "max_entries": 4096,
+    "misses": 0,
+    "size": 0
+  },
+  "candidate_input": "data\\processed\\ml\\candidate_moves.jsonl",
+  "candidate_sha256": "8ff3ac6b61895291ae6e8bcf7c340eaf4befb3ca97b88da10c2fd143313f5aa6",
+  "classification_changes": 8,
+  "concept_counts": {
+    "missed_mate": 4
+  },
+  "configuration": {
+    "hash_mb": 64,
+    "max_candidates": 24,
+    "strict": true,
+    "threads": 1,
+    "verification_depth": 12,
+    "verify": true
+  },
+  "created_at_utc": "2026-10-16T08:47:52.658730+00:00",
+  "elapsed_seconds": 2.497265400015749,
+  "engine_profile": {
+    "achieved_depth": null,
+    "chess_version": "1.11.2",
+    "configured_depth": 12,
+    "engine_binary_sha256": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+    "engine_id": [
+      [
+        "author",
+        "the Stockfish developers (see AUTHORS file)"
+      ],
+      [
+        "name",
+        "Stockfish 19"
+      ]
+    ],
+    "engine_options": [
+      [
+        "debug log file",
+        "<empty>"
+      ],
+      [
+        "evalfile",
+        "nn-1a298aa575a0.nnue"
+      ],
+      [
+        "hash",
+        64
+      ],
+      [
+        "move overhead",
+        10
+      ],
+      [
+        "multipv",
+        1
+      ],
+      [
+        "nodestime",
+        0
+      ],
+      [
+        "numapolicy",
+        "auto"
+      ],
+      [
+        "ponder",
+        false
+      ],
+      [
+        "skill level",
+        20
+      ],
+      [
+        "syzygy50moverule",
+        true
+      ],
+      [
+        "syzygypath",
+        "<empty>"
+      ],
+      [
+        "syzygyprobedepth",
+        1
+      ],
+      [
+        "syzygyprobelimit",
+        7
+      ],
+      [
+        "threads",
+        1
+      ],
+      [
+        "uci_chess960",
+        false
+      ],
+      [
+        "uci_elo",
+        1320
+      ],
+      [
+        "uci_limitstrength",
+        false
+      ],
+      [
+        "uci_showwdl",
+        false
+      ]
+    ],
+    "engine_resources": [
+      [
+        "evalfile",
+        "nn-1a298aa575a0.nnue",
+        "embedded",
+        "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0"
+      ]
+    ]
+  },
+  "feature_input": "data\\processed\\ml\\candidate_features.jsonl",
+  "feature_sha256": "24deb2bba795e432c127cff30cbc7c41f717f3c92bca712ab50147270b423059",
+  "input_candidates": 213,
+  "input_diagnostics": [],
+  "input_features": 213,
+  "input_manifests": {
+    "candidate_manifest": {
+      "path": "data\\processed\\ml\\candidate_manifest.json",
+      "schema_version": "candidate_moves_v1",
+      "sha256": "8a2727f022222418cb319b29a96b6c47648e1717cda8ef2f4852ad9e8358cdf1"
+    },
+    "feature_manifest": {
+      "path": "data\\processed\\ml\\feature_manifest.json",
+      "schema_version": "chess_features_v1",
+      "sha256": "7a3fee719d55b677e928b6f5355bfa8b0c69d998414d423104a0ce6db8ad70ce"
+    }
+  },
+  "output_file": "mistake_label_proposals.jsonl",
+  "output_sha256": "5ff294b0f5d78a776517dd86c363f6dfc364e90cc4bd51a9a2b3bf36dc6edd8f",
+  "processed": 24,
+  "proposal_count": 4,
+  "quality_report_sha256": "3c12fdba6bc6ceb4e580c98b618e4e4638cffeacef2029928e260328e4174ffd",
+  "records_with_proposals": 4,
+  "rule_version": "conservative_tactics_v1",
+  "schema_version": "mistake_proposals_v1",
+  "selection_method": "round-robin original selection types, then restore input ordering",
+  "significant_status_changes": 2,
+  "valid_joined_records": 213,
+  "verification_failures": 0
+}

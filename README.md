@@ -9,3 +9,9 @@ for the streaming PGN loader, bounded Lichess sample, provenance, and limitation
 
 See [Candidate mistake extraction](research/candidate_mistake_extraction.md)
 for provisional move selection, reproducible JSONL, and the small Stockfish pilot.
+
+See [Lightweight chess features](research/chess_feature_engineering.md)
+for engine-independent board features, conventions, and candidate feature export.
+
+See [Evidence-based mistake proposals](research/evidence_based_mistake_labeling.md)
+for conservative tactical evidence, deeper verification, abstention, and pilot review.
