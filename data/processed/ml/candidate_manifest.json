@@ -1,0 +1,235 @@
+{
+  "analysis_profile": {
+    "achieved_depth": null,
+    "chess_version": "1.11.2",
+    "configured_depth": 8,
+    "engine_binary_sha256": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+    "engine_id": [
+      [
+        "author",
+        "the Stockfish developers (see AUTHORS file)"
+      ],
+      [
+        "name",
+        "Stockfish 19"
+      ]
+    ],
+    "engine_options": [
+      [
+        "debug log file",
+        "<empty>"
+      ],
+      [
+        "evalfile",
+        "nn-1a298aa575a0.nnue"
+      ],
+      [
+        "hash",
+        64
+      ],
+      [
+        "move overhead",
+        10
+      ],
+      [
+        "multipv",
+        1
+      ],
+      [
+        "nodestime",
+        0
+      ],
+      [
+        "numapolicy",
+        "auto"
+      ],
+      [
+        "ponder",
+        false
+      ],
+      [
+        "skill level",
+        20
+      ],
+      [
+        "syzygy50moverule",
+        true
+      ],
+      [
+        "syzygypath",
+        "<empty>"
+      ],
+      [
+        "syzygyprobedepth",
+        1
+      ],
+      [
+        "syzygyprobelimit",
+        7
+      ],
+      [
+        "threads",
+        1
+      ],
+      [
+        "uci_chess960",
+        false
+      ],
+      [
+        "uci_elo",
+        1320
+      ],
+      [
+        "uci_limitstrength",
+        false
+      ],
+      [
+        "uci_showwdl",
+        false
+      ]
+    ],
+    "engine_resources": [
+      [
+        "evalfile",
+        "nn-1a298aa575a0.nnue",
+        "embedded",
+        "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0"
+      ]
+    ]
+  },
+  "average_seconds_per_successful_game": 0.6680677899974399,
+  "cache": {
+    "after": {
+      "evictions": 0,
+      "hits": 19,
+      "max_entries": 4096,
+      "misses": 711,
+      "size": 711
+    },
+    "before": {
+      "evictions": 0,
+      "hits": 0,
+      "max_entries": 4096,
+      "misses": 0,
+      "size": 0
+    },
+    "context_available": true,
+    "delta": {
+      "evictions": 0,
+      "hits": 19,
+      "misses": 711
+    }
+  },
+  "candidate_count": 213,
+  "complete_requested_batch": true,
+  "configured_depth": 8,
+  "created_at_utc": "2026-10-16T05:46:18.499812+00:00",
+  "elapsed_seconds": 6.680677899974398,
+  "failures": [],
+  "games": [
+    {
+      "candidates": 30,
+      "elapsed_seconds": 0.9099922000896186,
+      "game_id": "rFLdfbbL",
+      "plies": 102
+    },
+    {
+      "candidates": 18,
+      "elapsed_seconds": 0.4804038000293076,
+      "game_id": "0JJ4ygL3",
+      "plies": 55
+    },
+    {
+      "candidates": 32,
+      "elapsed_seconds": 0.9877507999772206,
+      "game_id": "UGPRMCrm",
+      "plies": 152
+    },
+    {
+      "candidates": 10,
+      "elapsed_seconds": 0.2797569000395015,
+      "game_id": "QTVeTYsm",
+      "plies": 37
+    },
+    {
+      "candidates": 29,
+      "elapsed_seconds": 1.0430024999659508,
+      "game_id": "BXeKWqsb",
+      "plies": 108
+    },
+    {
+      "candidates": 15,
+      "elapsed_seconds": 0.49082569999154657,
+      "game_id": "OrIHxIlC",
+      "plies": 49
+    },
+    {
+      "candidates": 10,
+      "elapsed_seconds": 0.27598889998625964,
+      "game_id": "ZTGv9c0X",
+      "plies": 30
+    },
+    {
+      "candidates": 25,
+      "elapsed_seconds": 0.49378479993902147,
+      "game_id": "ricuwFfn",
+      "plies": 69
+    },
+    {
+      "candidates": 16,
+      "elapsed_seconds": 0.2588380000088364,
+      "game_id": "DwJ3Shfi",
+      "plies": 44
+    },
+    {
+      "candidates": 28,
+      "elapsed_seconds": 0.5281984999310225,
+      "game_id": "toMrnQDX",
+      "plies": 74
+    }
+  ],
+  "games_analyzed": 10,
+  "games_attempted": 10,
+  "games_failed": 0,
+  "input_path": "data\\raw\\ml\\games\\lichess_game_sample.pgn",
+  "input_sha256": "48d2798c43cff3eb92c63a3fb20d8ebc0fca6e6a5714f1f7fd49232d5586ca94",
+  "limitations": [
+    "Candidates are not verified tactical or positional labels.",
+    "Configured depth is not measured achieved depth; low-depth scores are provisional.",
+    "First eligible input games and capped controls introduce selection bias.",
+    "Reproducible JSONL requires identical underlying engine results and metadata."
+  ],
+  "loader_stats": {
+    "accepted": 10,
+    "error_examples": [],
+    "processed": 10,
+    "rejected": 0,
+    "rejection_counts": {}
+  },
+  "mate_transition_counts": {
+    "ambiguous": 3,
+    "beneficial": 4,
+    "harmful": 9
+  },
+  "output_file": "candidate_moves.jsonl",
+  "output_sha256": "8ff3ac6b61895291ae6e8bcf7c340eaf4befb3ca97b88da10c2fd143313f5aa6",
+  "requested_games": 10,
+  "schema_version": "candidate_moves_v1",
+  "selection_configuration": {
+    "control_cp_loss_max": 20,
+    "cp_loss_threshold": 100,
+    "include_mate_candidates": true,
+    "max_control_moves_per_game": 5,
+    "random_seed": 42
+  },
+  "selection_counts": {
+    "AMBIGUOUS": 3,
+    "LOW_ERROR_CONTROL": 50,
+    "MATE_RELATED": 13,
+    "SIGNIFICANT_CP_ERROR": 147
+  },
+  "source_manifest_path": "data\\raw\\ml\\games\\source_manifest.json",
+  "source_manifest_sha256": "4ec2061bd306bff67f211141d0ad944279dd44855d10c0fef4dce2a912afd0f6",
+  "stop_reason": "input_end_or_game_limit",
+  "total_moves_analyzed": 720
+}

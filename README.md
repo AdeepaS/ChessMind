@@ -3,3 +3,9 @@ A personalized chess weakness detection and explainable training recommendation 
 
 See [Puzzle dataset acquisition and validation](research/puzzle_dataset.md)
 for dependency setup, bounded sample acquisition, inspection, and offline tests.
+
+See [Human game dataset acquisition and validation](research/human_game_dataset.md)
+for the streaming PGN loader, bounded Lichess sample, provenance, and limitations.
+
+See [Candidate mistake extraction](research/candidate_mistake_extraction.md)
+for provisional move selection, reproducible JSONL, and the small Stockfish pilot.
