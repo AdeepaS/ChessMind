@@ -9,7 +9,7 @@ from .taxonomy import MistakeConcept
 
 
 LABEL_SCHEMA_VERSION = "mistake_proposals_v1"
-RULE_VERSION = "conservative_tactics_v1"
+RULE_VERSION = "conservative_tactics_v2"
 
 
 @dataclass(frozen=True)

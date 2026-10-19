@@ -1,6 +1,7 @@
 """Bounded joins, engine ownership, deterministic output and safe publication."""
 
 import json
+from dataclasses import asdict
 from pathlib import Path
 from unittest.mock import Mock
 
@@ -11,6 +12,8 @@ from src.chessmind.engine import analyzer as engine_api
 from src.chessmind.ml.data.candidate_schema import AnalysisProfile
 from src.chessmind.ml.labeling import pipeline
 from src.chessmind.ml.labeling.schema import LabelingConfig, VerificationResult
+from src.chessmind.ml.labeling import engine_verification
+from src.chessmind.engine.analyzer import serialize_evaluation
 
 
 @pytest.fixture
@@ -43,6 +46,56 @@ def test_counts_hashes_and_deterministic_output(labeling_inputs, tmp_path):
     engine.quit.assert_called_once()
     pipeline.run_labeling_pipeline(c, f, tmp_path / "two", engine_path=binary)
     assert (tmp_path / "one/mistake_label_proposals.jsonl").read_bytes() == (tmp_path / "two/mistake_label_proposals.jsonl").read_bytes()
+
+
+@pytest.mark.parametrize("black", [False, True])
+def test_cp_mate_review_preserves_verification_and_provenance(tmp_path, labeling_case, monkeypatch, black):
+    board = chess.Board("7k/5K2/6Q1/8/8/8/8/8 w - - 0 1")
+    c, f, _ = labeling_case(fen=board.mirror().fen() if black else board.fen(),
+        move="g3g4" if black else "g6g5")
+    # Original CP classification differs from the new mate-to-CP verification.
+    before = chess.engine.Mate(-1 if black else 1)
+    after = chess.engine.Cp(-500 if black else 500)
+    before_pv = ("g3g2",) if black else ("g6g7",)
+    after_pv = ("h1h2",) if black else ("h8h7",)
+    responses = [{"evaluation": serialize_evaluation(score), "depth": 12,
+                  "pv": [chess.Move.from_uci(u) for u in pv]}
+                 for score, pv in [(before, before_pv), (after, after_pv)]]
+    monkeypatch.setattr(engine_verification, "analyze_board", Mock(side_effect=responses))
+    monkeypatch.setattr(pipeline, "_profile", Mock(return_value=AnalysisProfile(configured_depth=12)))
+    # Ensure the historical classification differs for both mover colors.
+    c["existing_classification"] = "Excellent"
+    c["centipawn_loss"] = 0
+    from src.chessmind.ml.features.extractor import extract_candidate_features
+    f = asdict(extract_candidate_features(c))
+    candidates, features = tmp_path / "candidates.jsonl", tmp_path / "features.jsonl"
+    candidates.write_text(json.dumps(c))
+    features.write_text(json.dumps(f))
+    original_bytes = candidates.read_bytes(), features.read_bytes()
+    out = tmp_path / "review"
+    manifest = pipeline.run_labeling_pipeline(candidates, features, out, engine=Mock())
+    report = json.loads((out / "label_quality_report.json").read_text())
+    row = json.loads((out / "mistake_label_proposals.jsonl").read_text())
+    assert report["status_counts"] == {"requires_review": 1}
+    assert report["proposal_count"] == 0 and report["abstentions"] == 1
+    assert report["verification_failures"] == 0 and report["classification_changes"] == 1
+    assert row["candidate_id"] == c["candidate_id"] and row["review_status"] == "unreviewed"
+    assert row["proposals"] == []
+    assert row["reasons"] == ["post_move_forced_mate_unconfirmed"]
+    assert row["evidence"][1]["continuation"] == list(before_pv)
+    verified = row["verification"]
+    assert verified["before"]["mate"] == (-1 if black else 1)
+    assert verified["after"]["cp"] == (-500 if black else 500)
+    assert verified["after_pv"] == list(after_pv)
+    assert verified["original_classification"] == "Excellent"
+    assert verified["classification"] == "Blunder" and verified["classification_changed"]
+    assert verified["mate_quality"] == "lost_forced_mate"
+    assert report["comparisons"][0]["original_classification"] == "Excellent"
+    assert report["comparisons"][0]["classification"] == "Blunder"
+    assert row["candidate_input_sha256"] == manifest["candidate_sha256"] == pipeline.file_sha256(candidates)
+    assert row["feature_input_sha256"] == manifest["feature_sha256"] == pipeline.file_sha256(features)
+    assert row["rule_version"] == manifest["rule_version"] == "conservative_tactics_v2"
+    assert (candidates.read_bytes(), features.read_bytes()) == original_bytes
 
 
 @pytest.mark.parametrize("problem", ["missing", "mismatch", "duplicate_candidate", "duplicate_feature", "bad_json"])

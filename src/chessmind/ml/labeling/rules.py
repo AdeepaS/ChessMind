@@ -18,6 +18,8 @@ def propose_labels(candidate, feature, verification):
         proposals.append(LabelProposal(MistakeConcept.MISSED_MATE, (mate,)))
     if proposals:
         return tuple(proposals), evidence, "proposed", ("provisional_rule_support_requires_expert_review",)
+    if mate.reason == "post_move_forced_mate_unconfirmed":
+        return (), evidence, "requires_review", (mate.reason,)
     if candidate["selection_type"] == "SIGNIFICANT_CP_ERROR" and verification.significant_error_supported is False:
         return (), evidence, "conflicting_evidence", ("deeper_analysis_no_longer_supports_significant_error",)
     if (capture.supported or verification.mate_quality in ("slower_mate", "faster_defeat")

@@ -112,9 +112,21 @@ exhaustive proof over all defenses. A post-move CP score can mean the engine has
 not found a longer mate, rather than that forced mate objectively disappeared.
 That is a central false-positive risk requiring expert review.
 
+Task 8 rule version `conservative_tactics_v2` routes a legal, complete mating
+alternative followed by a CP evaluation to `requires_review`, with reason
+`post_move_forced_mate_unconfirmed` and an empty proposal list. The mating PV
+remains in evidence, but `supported` is false for the missed-mate claim: finite
+search has not established objective loss of forced mate. No CP cutoff is used.
+Candidate identity, provenance, source evaluations and original/verified move
+classifications remain unchanged, including the evaluator's historical
+`lost_forced_mate` terminology. That comparison is not an adjudicated label.
+Retained/slower mate, reversal to opponent mate and terminal mate handling are
+unchanged. Review-required records count as abstentions and remain unreviewed.
+
 ## Proposal schema and decisions
 
-Schema: `mistake_proposals_v1`; rule version: `conservative_tactics_v1`.
+Schema: `mistake_proposals_v1`; current rule version: `conservative_tactics_v2`.
+Historical Task 7 artifacts retain `conservative_tactics_v1`.
 All record structures are immutable and preserve candidate/game/player/ply
 identity, source schema versions, input hashes, canonical feature-record hash,
 structured verification, evidence, zero-or-more proposals and reasons.
@@ -126,7 +138,7 @@ Automatic status is separate from expert review:
 | `proposed` | At least one narrow rule has provisional support. |
 | `insufficient_evidence` | No supported concept, or verification unavailable. |
 | `conflicting_evidence` | A significant-CP candidate no longer meets its threshold. |
-| `requires_review` | Retained-mate distance uncertainty or unresolved capture evidence. |
+| `requires_review` | Unconfirmed post-move forced mate, retained-mate distance uncertainty or unresolved capture evidence; no automatic label proposal. |
 
 `review_status` is always `unreviewed` in generated artifacts. Proposal lists can
 be empty; no move is forced into one concept. The schema/rule collector supports
@@ -179,6 +191,10 @@ inputs and zero-candidate limits launch no engine. Depth is the search bound;
 there is no promised wall-clock deadline for a batch.
 
 ## Real pilot results and inspection
+
+The results below describe the unchanged Task 7 historical artifacts. Under
+Task 8 rules, their four mate-to-CP proposals would instead require review with
+their mating evidence retained. No historical output has been regenerated.
 
 Run: 2026-10-16 at 08:47:52 UTC (14:17:52 Asia/Colombo). Stockfish 19,
 chess library 1.11.2, depth 12, Threads=1, Hash=64 MiB, MultiPV=1, full strength,

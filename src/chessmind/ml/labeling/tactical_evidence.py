@@ -99,4 +99,7 @@ def missed_mate_evidence(candidate, verification):
     winner = "black" if final.turn else "white"
     if not final.is_checkmate() or winner != mover:
         return TacticalEvidence(kind, False, "mating_pv_not_complete", pv)
+    if after.type == "cp":
+        # A finite search returning CP does not exclude a longer forced mate.
+        return TacticalEvidence(kind, False, "post_move_forced_mate_unconfirmed", pv)
     return TacticalEvidence(kind, True, "verified_mover_mate_lost_with_concrete_mating_alternative", pv)

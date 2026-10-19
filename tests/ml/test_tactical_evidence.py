@@ -4,6 +4,7 @@ from dataclasses import replace
 
 import chess
 import chess.engine
+import pytest
 
 from src.chessmind.ml.labeling.tactical_evidence import capture_evidence, missed_mate_evidence
 
@@ -66,7 +67,8 @@ def test_missed_mate_concrete_alternative(labeling_case):
     c, _, v = labeling_case(fen="7k/5K2/6Q1/8/8/8/8/8 w - - 0 1", move="g6g5",
         before=chess.engine.Mate(1), after=chess.engine.Cp(500), before_pv=("g6g7",), after_pv=("h8h7",))
     e = missed_mate_evidence(c, v)
-    assert e.supported and e.continuation == ("g6g7",)
+    assert not e.supported and e.continuation == ("g6g7",)
+    assert e.reason == "post_move_forced_mate_unconfirmed"
     assert not missed_mate_evidence(c, replace(v, before_pv=("f7f6",))).supported
 
 
@@ -84,3 +86,21 @@ def test_black_capture_symmetry(labeling_case):
     c, f, v = labeling_case(fen=original.mirror().fen(), move=mirror_move("c2b4"),
         after=chess.engine.Cp(500), after_pv=tuple(map(mirror_move, ("b8b4", "h1g1", "b4b5", "g1f1"))))
     assert capture_evidence(c, f, v).supported
+
+
+@pytest.mark.parametrize("fen,move,pv,mate", [
+    ("r3kb1r/p2b1pp1/1q2p1np/2ppP1B1/8/2P2N2/PP3PPP/RN1QR1K1 w kq - 0 13",
+     "g5h4", ("g6h4", "f3h4", "b6b2", "b1d2"), False),
+    ("r3k2r/p2bbpp1/1q2p2p/2ppP3/7N/2P5/PP3PPP/RN1QR1K1 w kq - 1 15",
+     "b2b3", ("e7h4", "d1g4", "h4g5", "f2f4"), False),
+    ("rnb1qrk1/2p2n2/pp6/3PpNp1/5bP1/2P2N2/PPQ1B3/1K1R3R w - - 0 28",
+     "f5e7", ("e8e7", "c2g6"), True),
+], ids=["rFLdfbbL-ply25-exchange", "rFLdfbbL-ply29-already-attacked", "0JJ4ygL3-ply55-mating-sacrifice"])
+def test_pilot_hanging_counterexamples(labeling_case, fen, move, pv, mate):
+    from src.chessmind.ml.labeling.rules import propose_labels
+    c, f, v = labeling_case(fen=fen, move=move, after_pv=pv,
+        before=chess.engine.Mate(2) if mate else chess.engine.Cp(0),
+        after=chess.engine.Mate(1) if mate else chess.engine.Cp(-300))
+    e = capture_evidence(c, f, v)
+    assert not e.supported and e.reason == "victim_already_geometrically_attacked"
+    assert propose_labels(c, f, v)[0] == ()
