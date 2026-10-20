@@ -95,3 +95,103 @@ This foundation does not establish class coverage, leakage-safe splits, reviewer
 agreement, an exporter, or model readiness. Some saved mate-to-CP cases may remain
 unresolved even after review. Only deterministic synthetic tests create eligible
 fixture annotations; no real dataset labels are created.
+
+## Task 9: dataset readiness inspection
+
+From the repository root, inspect the existing saved pilot without engine searches
+or file outputs:
+
+```powershell
+.venv\Scripts\python.exe -B -m scripts.inspect_training_readiness
+```
+
+The CLI prints deterministic, sorted JSON to stdout. It has no output-file option,
+so it cannot overwrite an input artifact. Exit **0** means a valid inspection,
+including a valid empty or zero-eligible dataset. Exit **2** means invalid inputs
+(including missing files, unsupported schemas, malformed JSON, conflicting finalized
+reviews, or integrity failures); exit **1** indicates an unexpected execution failure.
+Argument usage errors also exit 2. Do not use exit 0 alone as permission to train:
+inspect `training_ready` and the scope described below.
+
+Defaults use the existing candidate, feature, proposal, source PGN and source
+manifest paths. Override them with `--candidate-path`, `--feature-path`,
+`--evidence-path`, `--source-dataset-path` and `--source-manifest-path`.
+Adjacent `candidate_manifest.json`, `feature_manifest.json` and
+`labeling_manifest.json` are verified when present; explicit paths can be supplied
+with `--candidate-manifest-path`, `--feature-manifest-path` and
+`--labeling-manifest-path`. A referenced label-quality report is hash-checked too.
+Recorded source paths are provenance text, never automatically opened.
+
+Supply actual review inputs only after independent review:
+
+```powershell
+.venv\Scripts\python.exe -B -m scripts.inspect_training_readiness --adjudications-path <reviews.jsonl> --approvals-path <trusted-approval-hashes.json>
+```
+
+The angle-bracket paths are placeholders, not bundled review artifacts.
+Adjudications are JSONL `AdjudicationRecord` objects. Approvals are a JSON array of
+canonical annotation SHA-256 strings, supplied by a separately trusted operator.
+The CLI never creates approvals or derives them from submissions. Supplying a list
+does not authenticate its author: the caller must preserve the trust boundary
+described above. A missing optional argument means no reviews/approvals; explicitly
+supplying a nonexistent file is an input error. Submit the complete review collection
+so conflicting finalized decisions cannot be hidden by selecting a subset.
+
+Report fields:
+
+- `integrity_valid` and `integrity_errors`: collection-wide validation. Invalid
+  input clears counts and eligibility results; partial successes are not usable.
+- `artifact_sha256`: actual input-byte hashes, including supplied review/approval
+  files and available manifests.
+- `counts`: source/candidate games, candidates, feature-complete candidates,
+  evidence coverage, engine verification statuses, provisional proposal counts,
+  historical evidence counts, and all four proposal statuses (including zeros).
+- `versions`: candidate, feature, evidence, rule, adjudication and eligibility
+  policy version inventories.
+- `adjudication_status`: draft/finalized decisions, approved/unapproved and
+  ineligible counts, plus supplied/unused approval hashes. Approval alone is not
+  eligibility; drafts and unresolved decisions remain ineligible.
+- `eligible_labels`: total candidate/concept decisions accepted by the existing
+  `is_training_eligible` predicate, with explicit positive and negative counts per
+  concept. Unannotated concepts stay unknown.
+- `blocking_reasons`: reasons no eligible labels are available, or an
+  `artifact_integrity_failure`. Historical evidence can coexist with eligible
+  current evidence but is always excluded from eligibility.
+- `training_ready`: true only when integrity passes and at least one label passes
+  the existing eligibility policy. **This is a label-readiness gate, not a claim
+  of adequate data, class coverage, safe partitions or readiness to fit a model.**
+  `readiness_scope` repeats this limitation in the machine-readable report.
+
+The inspector reuses strict bounded JSONL reading, canonical candidate/feature
+validation, source hashes and manifest game/index linkage, saved score/PV validation,
+current tactical rules and the adjudication predicate. It performs no engine search,
+training export, splitting, source PGN replay or new chess adjudication. Artifacts
+are limited to 32 MiB each; candidate/feature/evidence JSONL uses the existing
+10,000-line and 2 MiB-line pilot limits, and adjudications use a 10,000-line limit.
+Inputs are rehashed before returning to detect changes during inspection.
+Current-rule evidence is checked against replayed rule decisions. Historical v1
+evidence is structurally/linkage validated and inventoried, not migrated or accepted
+as eligible. Unknown versions fail collection integrity.
+
+The saved pilot should report 213 feature-complete candidates, 24 engine-verified
+records, four historical provisional proposals, zero adjudications and **zero eligible
+labels**, with `training_ready = false`. The remaining 189 candidates have no saved
+verification record. Engine verification and legal continuations are evidence, not
+independent confirmation of a concept. Zero eligible labels block supervised
+training; neither abstention, `requires_review`, nor a low-error control supplies a
+negative target.
+
+Before training, prepare supported current-version evidence separately, obtain
+explicit independent human concept decisions with rationale and provenance, finalize
+them, and establish separate approval for their exact hashes. Then assess coverage,
+review quality and leakage-safe partitions. Those later steps are not implemented
+by this inspector.
+
+Focused verification:
+
+```powershell
+.venv\Scripts\python.exe -B -m pytest tests/ml/test_dataset_readiness.py -q
+```
+
+Positive and negative eligible fixtures in these tests are explicitly synthetic.
+They do not create real reviewed labels or change the saved artifacts.
