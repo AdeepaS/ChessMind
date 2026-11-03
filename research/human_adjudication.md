@@ -40,8 +40,9 @@ Do not populate this set from submitted annotations or let an annotator approve
 their own submission. The hash binds the reviewer, decision, rationale and evidence;
 changing any field invalidates approval.
 
-No authentication service or trusted approval registry is implemented here. Without
-such independently established approval, all decisions fail eligibility. Hashes
+No authentication service is implemented. Stage C2 supplies issuance and storage for
+an externally trusted approval registry; it does not establish the operator's authority.
+Without independently established approval, all decisions fail eligibility. Hashes
 provide integrity, not proof of expertise, independence, or chess correctness.
 The predicate cannot defend against a caller fabricating its trusted approval set
 or hiding a conflicting review: pass the complete collection, not a selected subset.
@@ -49,6 +50,85 @@ For this MVP the approval set is an explicit trust input, not an authentication
 system or a requirement to deploy a review service. It can be maintained by a
 trusted operator after independent review. Exposing it directly to untrusted
 annotation submitters would bypass the approval safeguard.
+
+## Stage C2: trusted operator issuance
+
+The complete lifecycle is:
+
+Candidate -> verified evidence -> human review -> finalized decision -> independent
+approval -> eligibility validation.
+
+`approval_workflow.py` loads the complete review collection and artifact bundle,
+validates it with dataset readiness and Stage A, and selects one exact canonical
+finalized-review hash. `approve_review` requires explicit `confirm=True`, a nonempty
+`operator_id`, and a nonempty `independent_justification`. It never changes a review
+or creates a human decision. It reuses `record_sha256` and `is_training_eligible`.
+
+Only finalized positive/negative decisions with verified current v2 evidence qualify.
+Historical v1, drafts, unresolved decisions, invalid tactical concepts, missing or
+changed artifacts, and finalized conflicts are rejected. Issuance also rejects any
+other review for the selected candidate/concept whose decision differs, including
+an unresolved draft. Agreeing drafts and reviews of other concepts are not conflicts.
+This conservative issuance restriction does not change Stage A or the existing
+eligibility predicate. The complete collection must be supplied; hiding a disagreement
+would defeat this check. There is no automated conflict resolution or final-review
+revision workflow. Stop for human attention rather than deleting/replacing records
+to get an approval through.
+
+A negative means a human established that the specific concept does not apply.
+Rejecting an unsupported proposal is not sufficient proof of a negative; uncertainty
+must remain unresolved. Abstentions can support independently justified decisions,
+but their status never supplies the decision. In particular, a mate-to-CP transition
+alone does not prove a missed mate: the independent justification must explain the
+actual basis for resolving the ambiguity. The code requires explicit justification
+but cannot assess its chess correctness. No confidence score or engine proposal
+triggers automatic authorization.
+
+An operator identifier equal to the annotating reviewer's identifier (case-insensitive)
+is rejected. Different strings are not proof of distinct people: this is a guard
+against obvious self-approval, not authentication. Use an independently trusted
+operator and a registry directory controlled through filesystem permissions or an
+appropriate external authorization procedure. Annotators must not have registry
+write access. Protect the **directory**, including temporary/lock files: replacement
+uses a fresh same-directory temporary file, and inherited permissions must preserve
+the trust boundary. The CLI does not install ACLs or provide an authentication service.
+
+Operator identity and justification are returned on stdout as audit context, not
+stored in the registry or used to change the review hash. An external authority must
+retain any required authenticated audit trail. This version does not claim authenticated
+approval provenance. `validate_approval` checks an explicit request using a hypothetical
+singleton hash set; only `approve_review` persists that one authorization. Inspection
+alone never writes approval hashes.
+
+`approval_store.py` retains the existing JSON array of canonical SHA-256 strings.
+Initialization is explicit (`[]` plus LF); missing/corrupt registries are errors.
+Hashes are unique, lowercase, sorted deterministically, and bounded to 10,000 entries
+and 32 MiB. Existing valid hashes cannot be removed or replaced by this API. There
+is no revocation command in C2; mistaken authorization requires external governance,
+and affected data must not be used until that issue is resolved.
+
+The store uses Stage B's pattern: exclusive sibling lock, expected-byte digest checked
+under the lock, same-directory temporary file, flush/fsync, and atomic `os.replace`.
+The workflow revalidates the complete input snapshot under the approval lock immediately
+before replacement. Ordinary validation/serialization/fsync/replace failures preserve
+the registry and clean temporary files. Cross-process writers must cooperate using
+the same canonical path. External edits, hard-link aliases, network filesystem
+semantics, and universal power-loss durability are outside the guarantee. Crashes
+can leave stale locks; never steal them automatically. A failure after replacement
+may mean the commit succeeded: inspect the registry before retrying.
+
+Review and evidence files must remain immutable during issuance; the approval lock
+does not lock artifact writers. Freeze approved review collections for downstream use.
+Adding a contradictory draft after issuance does not automatically revoke an existing
+hash: readiness eligibility semantics are unchanged, so subsequent disagreements
+require operator attention. Changed finalized records/evidence still invalidate the
+original hash bindings. No pilot evidence is migrated or regenerated by this workflow.
+
+Readiness now uses Stage B's exact review JSONL decoder: blank records, omitted fields,
+and exact duplicate drafts fail closed. Empty zero-byte stores remain valid. Existing
+approval arrays remain compatible. `training_ready` still means valid integrity and
+at least one eligible label; it does not certify dataset sufficiency, class balance,
+reviewer agreement, or leakage-safe evaluation.
 
 ## Creating one annotation
 

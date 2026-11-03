@@ -118,3 +118,65 @@ protect integrity, not reviewer expertise or identity.
 
 New fixtures are temporary and synthetic. They do not write production datasets or
 approve any real reviews. Test results are reported separately after execution.
+
+## Stage C2: separate trusted-operator CLI
+
+The lifecycle continues from a finalized human decision to independent authorization
+of its exact canonical hash, then existing eligibility validation. The reviewer CLI
+still cannot approve. Use `scripts.approve_tactical_review` as a separately trusted
+operator, with registry directory access denied to annotation submitters. The tool
+does not configure permissions or authenticate identities. Protect the directory as
+well as the registry, since atomic replacement creates a new temporary file there.
+
+From the repository root (placeholder values below require actual human decisions):
+
+```powershell
+.venv\Scripts\python.exe -B -m scripts.approve_tactical_review init --approvals-path <PROTECTED_DIRECTORY>/approvals.json
+.venv\Scripts\python.exe -B -m scripts.approve_tactical_review list --approvals-path <PROTECTED_DIRECTORY>/approvals.json
+.venv\Scripts\python.exe -B -m scripts.approve_tactical_review inspect --adjudications-path <REVIEWS.jsonl> --review-hash <FINALIZED_REVIEW_SHA256>
+.venv\Scripts\python.exe -B -m scripts.approve_tactical_review approve --adjudications-path <REVIEWS.jsonl> --approvals-path <PROTECTED_DIRECTORY>/approvals.json --review-hash <FINALIZED_REVIEW_SHA256> --confirm-independent-approval --operator-id <INDEPENDENT_OPERATOR_ID> --independent-justification "<Independent basis for this exact positive or negative decision>"
+.venv\Scripts\python.exe -B -m scripts.inspect_training_readiness --adjudications-path <REVIEWS.jsonl> --approvals-path <PROTECTED_DIRECTORY>/approvals.json
+```
+
+Direct `python scripts/approve_tactical_review.py ...` execution also works.
+`inspect` and `approve` accept the same candidate/feature/evidence/source/manifest
+path options as the reviewer CLI. Supply a supported v2 bundle explicitly: the default
+saved pilot is historical v1 and cannot be approved. `inspect` is read-only and can
+show a blocked draft or unresolved record for diagnosis; it never promises eligibility.
+`list` lists registry hashes only, not verified eligible labels. Use the readiness
+inspector with the complete matching input bundle to calculate actual label counts.
+
+`approve` requires affirmative action and an independent justification; no decision
+is defaulted, inferred or finalized. Nonempty text is an operator assertion, not
+machine verification of independence or chess correctness. For ambiguous mate-to-CP
+evidence, independently establish and explain the concept decision; otherwise preserve
+`unresolved`. A concept-specific verified negative can be authorized just like a
+positive, but an absent proposal or low-error control is not a negative label.
+
+The operator ID must differ from the annotating reviewer ID, but alternate identifiers
+cannot prove separate people. Identity and justification appear in success output
+only; the existing registry schema remains an array of review hashes. Retain required
+authenticated audit context externally. Registry initialization cannot overwrite
+existing data, repeated approval is rejected, and existing hashes are preserved.
+
+Any contradictory or unresolved decision for the selected candidate/concept blocks
+new issuance. There is no final-review revision, disagreement-resolution, or approval
+revocation command. Do not silently discard conflicting drafts. Freeze review/evidence
+inputs during approval and approved collections during downstream use; new later
+disagreements require human governance, not automatic rewriting of prior approvals.
+
+The registry uses exclusive locking plus stale-content checks and atomic replacement.
+It rechecks reviews and artifacts before committing, but does not transactionally lock
+external artifact writers. Stale locks require investigation with writers stopped.
+The full persistence/trust limitations are documented in `human_adjudication.md`.
+
+Exit 0 means the requested operation succeeded; 2 means invalid input, conflict or
+I/O failure; 1 means unexpected failure. No command trains or exports data.
+`training_ready` retains its limited meaning: at least one eligible label with valid
+integrity, not sufficient data, balanced concepts or leakage-safe train/test splits.
+
+Focused C2 verification:
+
+```powershell
+.venv\Scripts\python.exe -B -m pytest tests/ml/test_approval_workflow.py tests/ml/test_approval_store.py tests/ml/test_approval_cli.py tests/ml/test_dataset_readiness.py -q
+```

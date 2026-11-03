@@ -359,3 +359,22 @@ def test_cli_unexpected_failure(bundle, monkeypatch, capsys):
     monkeypatch.setattr("scripts.inspect_training_readiness.inspect_training_readiness", fail)
     assert main([]) == 1
     assert json.loads(capsys.readouterr().err)["error"] == "unexpected_failure"
+
+
+@pytest.mark.parametrize("problem", ["blank", "missing_state", "missing_schema", "missing_policy", "duplicate_draft"])
+def test_review_parsing_matches_stage_b_store(bundle, problem):
+    from src.chessmind.ml.labeling.review_store import load_reviews
+    paths, *_ = bundle
+    row = annotate(bundle, state="draft", approved=False)
+    path = paths["adjudications_path"]
+    if problem == "blank":
+        path.write_bytes(path.read_bytes() + b"\n")
+    elif problem == "duplicate_draft":
+        write_rows(path, [row, row])
+    else:
+        del row[{"missing_state": "review_state", "missing_schema": "schema_version",
+                 "missing_policy": "eligibility_version"}[problem]]
+        write_rows(path, [row])
+    with pytest.raises(ValueError):
+        load_reviews(path)
+    assert_invalid(paths, "")

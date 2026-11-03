@@ -329,9 +329,9 @@ def _inspect(report, candidate_path, feature_path, evidence_path, source_dataset
                 _require(type(lm[key]) is int and lm[key] == value, f"label manifest {key} mismatch")
     reviews = []
     if adjudications_path is not None:
-        lines = data["adjudications"].decode("utf-8").splitlines()
-        _require(len(lines) <= 10000, "adjudication record budget exceeded")
-        reviews = [AdjudicationRecord(**_json(line)) for line in lines if line.strip()]
+        # Lazy import avoids the existing store -> workflow -> readiness cycle.
+        from ..labeling.review_store import decode_reviews
+        reviews = decode_reviews(data["adjudications"])
     reviews = validate_adjudications(reviews)
     approvals = _json(data["approvals"]) if approvals_path is not None else []
     _require(type(approvals) is list, "approvals must be a JSON list")

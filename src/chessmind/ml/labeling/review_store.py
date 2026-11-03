@@ -44,6 +44,11 @@ def _decode(data):
     return _collection(records)
 
 
+def decode_reviews(data):
+    """Validate already-read JSONL bytes using the exact persistent-store rules."""
+    return _decode(data)
+
+
 def load_snapshot(path):
     """Read one byte snapshot; missing/corrupt stores raise, never become empty."""
     with Path(path).open("rb") as stream:
