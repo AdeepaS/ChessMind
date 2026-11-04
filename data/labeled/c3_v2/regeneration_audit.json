@@ -1,0 +1,213 @@
+{
+  "acceptance": {
+    "eligible_labels": 0,
+    "evaluation_cache_enabled": false,
+    "fresh_engine": true,
+    "integrity_valid": true,
+    "verified": 24
+  },
+  "code_revision": "7474b6a3f1c2d544570a16e4fe45f01ba0a776a8",
+  "cohort_sha256": "2ecacd6b786b90ac9ed89d6ed7adacb818c801f9536764b111b55f92df03c881",
+  "configuration": {
+    "hash_mb": 64,
+    "max_candidates": 24,
+    "strict": true,
+    "threads": 1,
+    "verification_depth": 12,
+    "verify": true
+  },
+  "created_at_utc": "2026-11-04T12:45:04.171229+00:00",
+  "engine_profile": {
+    "achieved_depth": null,
+    "chess_version": "1.11.2",
+    "configured_depth": 12,
+    "engine_binary_sha256": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+    "engine_id": [
+      [
+        "author",
+        "the Stockfish developers (see AUTHORS file)"
+      ],
+      [
+        "name",
+        "Stockfish 19"
+      ]
+    ],
+    "engine_options": [
+      [
+        "debug log file",
+        "<empty>"
+      ],
+      [
+        "evalfile",
+        "nn-1a298aa575a0.nnue"
+      ],
+      [
+        "hash",
+        64
+      ],
+      [
+        "move overhead",
+        10
+      ],
+      [
+        "multipv",
+        1
+      ],
+      [
+        "nodestime",
+        0
+      ],
+      [
+        "numapolicy",
+        "auto"
+      ],
+      [
+        "ponder",
+        false
+      ],
+      [
+        "skill level",
+        20
+      ],
+      [
+        "syzygy50moverule",
+        true
+      ],
+      [
+        "syzygypath",
+        "<empty>"
+      ],
+      [
+        "syzygyprobedepth",
+        1
+      ],
+      [
+        "syzygyprobelimit",
+        7
+      ],
+      [
+        "threads",
+        1
+      ],
+      [
+        "uci_chess960",
+        false
+      ],
+      [
+        "uci_elo",
+        1320
+      ],
+      [
+        "uci_limitstrength",
+        false
+      ],
+      [
+        "uci_showwdl",
+        false
+      ]
+    ],
+    "engine_resources": [
+      [
+        "evalfile",
+        "nn-1a298aa575a0.nnue",
+        "embedded",
+        "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0"
+      ]
+    ]
+  },
+  "engine_sha256": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+  "generated_artifact_sha256": {
+    "candidate_manifest": "8a2727f022222418cb319b29a96b6c47648e1717cda8ef2f4852ad9e8358cdf1",
+    "candidates": "8ff3ac6b61895291ae6e8bcf7c340eaf4befb3ca97b88da10c2fd143313f5aa6",
+    "evidence": "0e8a10949c38da8ceb3358bf10d97780fedf4b60d6a5ce401431f7f05049abe4",
+    "feature_manifest": "7a3fee719d55b677e928b6f5355bfa8b0c69d998414d423104a0ce6db8ad70ce",
+    "features": "24deb2bba795e432c127cff30cbc7c41f717f3c92bca712ab50147270b423059",
+    "labeling_manifest": "884a5e5066e3f19eb437309d0275cfa944f65699817f91f71acd557e036e3da0",
+    "quality_report": "a10b3fd505b75ff9e6d72183c9f29fdeab23700e6d14359a26aa3fe34a76f53b",
+    "source_dataset": "48d2798c43cff3eb92c63a3fb20d8ebc0fca6e6a5714f1f7fd49232d5586ca94",
+    "source_manifest": "4ec2061bd306bff67f211141d0ad944279dd44855d10c0fef4dce2a912afd0f6"
+  },
+  "historical_artifact_sha256": {
+    "candidate_manifest": "8a2727f022222418cb319b29a96b6c47648e1717cda8ef2f4852ad9e8358cdf1",
+    "candidates": "8ff3ac6b61895291ae6e8bcf7c340eaf4befb3ca97b88da10c2fd143313f5aa6",
+    "evidence": "5ff294b0f5d78a776517dd86c363f6dfc364e90cc4bd51a9a2b3bf36dc6edd8f",
+    "feature_manifest": "7a3fee719d55b677e928b6f5355bfa8b0c69d998414d423104a0ce6db8ad70ce",
+    "features": "24deb2bba795e432c127cff30cbc7c41f717f3c92bca712ab50147270b423059",
+    "labeling_manifest": "2239b85a41552a511408d350fd1c01986035aa4d140577ed6153b39babf812ab",
+    "quality_report": "3c12fdba6bc6ceb4e580c98b618e4e4638cffeacef2029928e260328e4174ffd",
+    "source_dataset": "48d2798c43cff3eb92c63a3fb20d8ebc0fca6e6a5714f1f7fd49232d5586ca94",
+    "source_manifest": "4ec2061bd306bff67f211141d0ad944279dd44855d10c0fef4dce2a912afd0f6"
+  },
+  "implementation_sha256": {
+    "src\\chessmind\\ml\\__init__.py": "70422c28f22f0e09456b63796ace0934d7281a2673a2f2f58340180110fdb10a",
+    "src\\chessmind\\ml\\data\\__init__.py": "c0b330c1b0ac250b450b28d480badefe31c77306c91fa4907a234523bdb65090",
+    "src\\chessmind\\ml\\data\\candidate_extraction.py": "966e71b1ce610173b46dff2ddcbf13a5042a17fe9306a524651de45185b58b2d",
+    "src\\chessmind\\ml\\data\\candidate_pipeline.py": "43f2d29f0573ee0594377f2cc6c3ef689df482272e3eac31203b5e88f43e961b",
+    "src\\chessmind\\ml\\data\\candidate_schema.py": "0d142def905768ba8ebb3c63bd75db4d6b350415ace6b6d5f08423cc0bfea198",
+    "src\\chessmind\\ml\\data\\dataset_readiness.py": "ca24c439f0d08f60037703ce86f844fa7a02f2eed3dc6a13c3472f078089a7ed",
+    "src\\chessmind\\ml\\data\\game_dataset_loader.py": "eb93f34ea1b1331bb5de79b7673c8569121c85ee5d87fb1d168bff597a753682",
+    "src\\chessmind\\ml\\data\\puzzle_exploration.py": "d6bbe310186f5a232c8324709ebd71cb00045c0311e444560444889cc160e672",
+    "src\\chessmind\\ml\\data\\puzzle_loader.py": "4012517147046d0603e009e016eb89fe0ba8a0642617e8d71a17a2d020d5efea",
+    "src\\chessmind\\ml\\features\\__init__.py": "2e98aa8c93b31a7b0d8364d382e24a1aef61a4a8b7ce88f923f8bca0e5957c5d",
+    "src\\chessmind\\ml\\features\\extractor.py": "a34e5006133d15dd55f42b3e67ef2ab862ea24d763610cbf8d2a54b6a3bd2a52",
+    "src\\chessmind\\ml\\features\\king_safety.py": "0bd246b64e493083f4ddf3eaddb2b954bef0d389742b335bc09155b6fa109766",
+    "src\\chessmind\\ml\\features\\material.py": "4fcfd335cc1475488978983e663fd6b47fe66635687eb70ed8d4fc134856ede0",
+    "src\\chessmind\\ml\\features\\pawn_structure.py": "1b842d8951bfc2115ba23a95b1312be45caccba9402f03241cbee12f9e03ddf2",
+    "src\\chessmind\\ml\\features\\piece_safety.py": "d6c96c1d0af4344d36fc619f1cae66cefc1175d374415b7e04fdf3c4ab1f1f99",
+    "src\\chessmind\\ml\\features\\pipeline.py": "5af5c72753560dbab322ccf1428e2b8704a5d0482926c7be216f1a329d2d39eb",
+    "src\\chessmind\\ml\\features\\schema.py": "09bf2af405bb1a92b21ad0fa00a77276f780e5c423563efa739a7e4ab88ddb47",
+    "src\\chessmind\\ml\\labeling\\__init__.py": "d8086496084208b3d9fc4ce8a20b346f6bde22bb7661545c7b7159010f8d7049",
+    "src\\chessmind\\ml\\labeling\\adjudication.py": "055f27f330347d3fe411108b39e7acd032ff86205ba9fcc9fbdb7f046be68c27",
+    "src\\chessmind\\ml\\labeling\\approval_store.py": "dfbc3bc36e1c2c3fc18908f139b8f177b1d0bdeb98ba6d04f7af8e766798ac67",
+    "src\\chessmind\\ml\\labeling\\approval_workflow.py": "fbd6f22df11ab57fb8676909c17fd132bd8c1b26ec9fa259f31fd024dc7a71b1",
+    "src\\chessmind\\ml\\labeling\\engine_verification.py": "263733466ac7f4aec864395d108300c365aec3dae8420f8b607589262b073b7d",
+    "src\\chessmind\\ml\\labeling\\pipeline.py": "cd43d4872a5dd1672c5f086d5a79cb5db3582ad6e75114a7a9cf59be33d181be",
+    "src\\chessmind\\ml\\labeling\\regeneration.py": "7c8437a0c4b95ac24b8c0d4f7267c4259df2fa9e3ac05618d00db8b314e7c7eb",
+    "src\\chessmind\\ml\\labeling\\review_store.py": "097488bfc821f5e7bdcd4de81acf0ed22aae34d0c39485b8f7234c8e6f30a2d6",
+    "src\\chessmind\\ml\\labeling\\review_workflow.py": "860b9188ad1bb8e6d6e627b8224ab7aa1d617e028f54daa02d7672902290373c",
+    "src\\chessmind\\ml\\labeling\\rules.py": "6931c93152cbd0129f0e19215b6a3428294df0e670cd11e607f26d3cd2582aee",
+    "src\\chessmind\\ml\\labeling\\schema.py": "3aacc21bf621d447a29424c4e702efc00102cf25cd838c998f93734c50ca4d4f",
+    "src\\chessmind\\ml\\labeling\\tactical_evidence.py": "4f43bdc3a5053974b8a62f6e18208416232203dfcdfa95e10e754bc95c74c528",
+    "src\\chessmind\\ml\\labeling\\taxonomy.py": "807d4d645c3b159c72562169d694d4fc2549d529dd1316e079ed921c567dd58e"
+  },
+  "protected_sha256": {
+    "candidate_manifest_path": "8a2727f022222418cb319b29a96b6c47648e1717cda8ef2f4852ad9e8358cdf1",
+    "candidate_path": "8ff3ac6b61895291ae6e8bcf7c340eaf4befb3ca97b88da10c2fd143313f5aa6",
+    "engine": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+    "evidence_path": "5ff294b0f5d78a776517dd86c363f6dfc364e90cc4bd51a9a2b3bf36dc6edd8f",
+    "feature_manifest_path": "7a3fee719d55b677e928b6f5355bfa8b0c69d998414d423104a0ce6db8ad70ce",
+    "feature_path": "24deb2bba795e432c127cff30cbc7c41f717f3c92bca712ab50147270b423059",
+    "labeling_manifest_path": "2239b85a41552a511408d350fd1c01986035aa4d140577ed6153b39babf812ab",
+    "quality_report": "3c12fdba6bc6ceb4e580c98b618e4e4638cffeacef2029928e260328e4174ffd",
+    "source_dataset_path": "48d2798c43cff3eb92c63a3fb20d8ebc0fca6e6a5714f1f7fd49232d5586ca94",
+    "source_manifest_path": "4ec2061bd306bff67f211141d0ad944279dd44855d10c0fef4dce2a912afd0f6"
+  },
+  "rule_version": "conservative_tactics_v2",
+  "schema_version": "c3_regeneration_audit_v1",
+  "selected_candidate_ids": [
+    "f07dc7ebd665ba4b2a9bbc0e50d5a680ffd23c95dc4f4bc2fd197473d425f5e6",
+    "7ee5e20cc8e21b19b719af427968950194429449aaabcebace0debb601c8e455",
+    "01abe12ef060c4202a9508ab3d689356f5edf9109f033b2659bd93ed53403cf4",
+    "9351accb1ec3a66e476849368a33ec565250058cfc37a9f961725752058c10fc",
+    "de10306a0be21c43ce3179c362db2adee7970e0e03fed4397d597ab547ad010b",
+    "523683feed409c1fc295aee8b5aabac212000128d66d591c641d67506f76c909",
+    "1795590765c270a3c59c302b05e72becde20aef7eac6578de47179f06901be3a",
+    "a5c5e0a9dd037cdca2fb64e386feced6f894e5e5a3dd4849e4632c7b1167235e",
+    "d580f23be8da05678b8e8a17669a1eccac2dc0bcc45c03b6a0ae07cad27c3a13",
+    "2281b28da88eeb1bc63ff4ed8db61d3a35a1613a53b10911438c63b470b13934",
+    "8e1b4ece6a7986b80eca1c9e51a28d9f7ae1a98acbed88235fe90212c73aed79",
+    "e4800fbe8010febdc69e153dcefe0800a2f108da4d7f16bb6c8caa816ab525df",
+    "b371556c18947e514465dfc429982fa53a2bfb17b00b6240a6d8a30a34c5a237",
+    "f1c7f2360ba854326dd5e917a715a07fc2effda3b70ee1456f2c580f39416735",
+    "baa6b2eb504ffbc7283aa2fcfeb4c1609321668db3f347dbfdaaae5c5bc22569",
+    "d7b523fde419d07849f6e25aa14360595bb5474cd5c8529d37c527d47882fa0d",
+    "78f26a4fd5c5e061bedcd4c408d7c7dbb4201209e8ec2ade585bfd25ac847917",
+    "383e0b55e602447296d14f220db325ce7d9340187423bce35493366b87f353d2",
+    "74d21c0521490a9438fd532a8d2c00297b9e31ca30054cea9aa8758bb069627c",
+    "32bf0160d37fa805ac117dcf005785e1f70adb67fe9bb44d9d50cc3d086536c1",
+    "9c83ab3d55a4ac4e75880c0aada535cccca96d4aa73edacedbb78147056e2936",
+    "74a8496cdedaa5f1a913d0970827d3d1e321e2155d2f851af17847aca7398312",
+    "608cda78aeaf55531290b99875dc0302bb659186eff3dc14233df899ec297606",
+    "4421f94f877f5d5006b9f3005216e1d8e28617a79fa944fbfe568ee49d8a608c"
+  ]
+}
